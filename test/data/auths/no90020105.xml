@@ -1,0 +1,396 @@
+<mets:mets PROFILE="metadataRecord" OBJID="/authorities/names/no90020105.xml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:marcxml="http://www.loc.gov/MARC21/slim" xmlns:mets="http://www.loc.gov/METS/" xmlns:mxe="http://www.loc.gov/mxe" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#" xmlns:sem="http://marklogic.com/semantics">
+  <mets:metsHdr LASTMODDATE="2016-12-20T12:19:52.158248-05:00"/>
+  <mets:dmdSec ID="marcxml">
+    <mets:mdWrap MDTYPE="MARC">
+      <mets:xmlData>
+	<marcxml:record>
+	  <marcxml:leader>01001nz  a2200241n  4500</marcxml:leader>
+	  <marcxml:controlfield tag="001">no90020105</marcxml:controlfield>
+	  <marcxml:controlfield tag="003">DLC</marcxml:controlfield>
+	  <marcxml:controlfield tag="005">19900928053407.1</marcxml:controlfield>
+	  <marcxml:controlfield tag="008">900921n| acazaaaa|          |a ana      </marcxml:controlfield>
+	  <marcxml:datafield tag="010" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">no 90020105 </marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="022" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">1105-011X</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="040" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">DLC-S</marcxml:subfield>
+    <marcxml:subfield code="c">DLC-S</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="050" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">DF901.T75</marcxml:subfield>
+    <marcxml:subfield code="b">T47</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="130" ind1=" " ind2="0">
+    <marcxml:subfield code="a">Thrakika (Athens, Greece : 1978)</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="410" ind1="2" ind2="0">
+    <marcxml:subfield code="a">Thrakiko Kentro (Athens, Greece).</marcxml:subfield>
+    <marcxml:subfield code="t">Thrakika</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="410" ind1="2" ind2="0">
+    <marcxml:subfield code="a">Hetaireia Thrakikōn Meletōn.</marcxml:subfield>
+    <marcxml:subfield code="t">Thrakika</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="530" ind1=" " ind2="0">
+    <marcxml:subfield code="w">a</marcxml:subfield>
+    <marcxml:subfield code="a">Thrakika (Athens, Greece : 1928)</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="643" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">Athēnai</marcxml:subfield>
+    <marcxml:subfield code="b">Thrakiko Kentro</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="644" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">n</marcxml:subfield>
+    <marcxml:subfield code="5">DLC</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="645" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">n</marcxml:subfield>
+    <marcxml:subfield code="5">DLC</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="646" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">c</marcxml:subfield>
+    <marcxml:subfield code="5">DLC</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="667" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">Formed by the union of: Thrakika (Athens, Greece : 1928), and: Archeion Thrakēs [not in LC]</marcxml:subfield>
+  </marcxml:datafield>
+	  <marcxml:datafield tag="670" ind1=" " ind2=" ">
+    <marcxml:subfield code="a">Thrakika (Athens, Greece : 1978). Thrakika, T. 1. (1978):</marcxml:subfield>
+    <marcxml:subfield code="b">t.p. (Thrakika : syngramma periodikon ekdidomenon hypo tou en Athēnais "Thrakikou Kentrou" kai tēs "Hetairias Thrakikōn Meletōn") pref. (a continuation of t. 47 of "Thrakika," and t. 39. of "Archeion Thrakēs")</marcxml:subfield>
+  </marcxml:datafield>
+	</marcxml:record>
+      </mets:xmlData>
+    </mets:mdWrap>
+  </mets:dmdSec>
+  <mets:dmdSec ID="mxe">
+    <mets:mdWrap MDTYPE="OTHER">
+      <mets:xmlData>
+	<mxe:record>
+	  <mxe:leader>
+	    <mxe:leader_cp00>0</mxe:leader_cp00>
+	    <mxe:leader_cp01>1</mxe:leader_cp01>
+	    <mxe:leader_cp02>0</mxe:leader_cp02>
+	    <mxe:leader_cp03>0</mxe:leader_cp03>
+	    <mxe:leader_cp04>1</mxe:leader_cp04>
+	    <mxe:leader_cp05>n</mxe:leader_cp05>
+	    <mxe:leader_cp06>z</mxe:leader_cp06>
+	    <mxe:leader_cp07> </mxe:leader_cp07>
+	    <mxe:leader_cp08> </mxe:leader_cp08>
+	    <mxe:leader_cp09>a</mxe:leader_cp09>
+	    <mxe:leader_cp10>2</mxe:leader_cp10>
+	    <mxe:leader_cp11>2</mxe:leader_cp11>
+	    <mxe:leader_cp12>0</mxe:leader_cp12>
+	    <mxe:leader_cp13>0</mxe:leader_cp13>
+	    <mxe:leader_cp14>2</mxe:leader_cp14>
+	    <mxe:leader_cp15>4</mxe:leader_cp15>
+	    <mxe:leader_cp16>1</mxe:leader_cp16>
+	    <mxe:leader_cp17>n</mxe:leader_cp17>
+	    <mxe:leader_cp18> </mxe:leader_cp18>
+	    <mxe:leader_cp19> </mxe:leader_cp19>
+	    <mxe:leader_cp20>4</mxe:leader_cp20>
+	    <mxe:leader_cp21>5</mxe:leader_cp21>
+	    <mxe:leader_cp22>0</mxe:leader_cp22>
+	    <mxe:leader_cp23>0</mxe:leader_cp23>
+	  </mxe:leader>
+	  <mxe:ldr>01001nz  a2200241n  4500</mxe:ldr>
+	  <mxe:controlfield_001>no90020105</mxe:controlfield_001>
+	  <mxe:controlfield_003>DLC</mxe:controlfield_003>
+	  <mxe:controlfield_005>19900928053407.1</mxe:controlfield_005>
+	  <mxe:controlfield_008>
+	    <mxe:c008_cp00>9</mxe:c008_cp00>
+	    <mxe:c008_cp01>0</mxe:c008_cp01>
+	    <mxe:c008_cp02>0</mxe:c008_cp02>
+	    <mxe:c008_cp03>9</mxe:c008_cp03>
+	    <mxe:c008_cp04>2</mxe:c008_cp04>
+	    <mxe:c008_cp05>1</mxe:c008_cp05>
+	    <mxe:c008_cp06>n</mxe:c008_cp06>
+	    <mxe:c008_cp07>|</mxe:c008_cp07>
+	    <mxe:c008_cp08> </mxe:c008_cp08>
+	    <mxe:c008_cp09>a</mxe:c008_cp09>
+	    <mxe:c008_cp10>c</mxe:c008_cp10>
+	    <mxe:c008_cp11>a</mxe:c008_cp11>
+	    <mxe:c008_cp12>z</mxe:c008_cp12>
+	    <mxe:c008_cp13>a</mxe:c008_cp13>
+	    <mxe:c008_cp14>a</mxe:c008_cp14>
+	    <mxe:c008_cp15>a</mxe:c008_cp15>
+	    <mxe:c008_cp16>a</mxe:c008_cp16>
+	    <mxe:c008_cp17>|</mxe:c008_cp17>
+	    <mxe:c008_cp18> </mxe:c008_cp18>
+	    <mxe:c008_cp19> </mxe:c008_cp19>
+	    <mxe:c008_cp20> </mxe:c008_cp20>
+	    <mxe:c008_cp21> </mxe:c008_cp21>
+	    <mxe:c008_cp22> </mxe:c008_cp22>
+	    <mxe:c008_cp23> </mxe:c008_cp23>
+	    <mxe:c008_cp24> </mxe:c008_cp24>
+	    <mxe:c008_cp25> </mxe:c008_cp25>
+	    <mxe:c008_cp26> </mxe:c008_cp26>
+	    <mxe:c008_cp27> </mxe:c008_cp27>
+	    <mxe:c008_cp28>|</mxe:c008_cp28>
+	    <mxe:c008_cp29>a</mxe:c008_cp29>
+	    <mxe:c008_cp30> </mxe:c008_cp30>
+	    <mxe:c008_cp31>a</mxe:c008_cp31>
+	    <mxe:c008_cp32>n</mxe:c008_cp32>
+	    <mxe:c008_cp33>a</mxe:c008_cp33>
+	    <mxe:c008_cp34> </mxe:c008_cp34>
+	    <mxe:c008_cp35> </mxe:c008_cp35>
+	    <mxe:c008_cp36> </mxe:c008_cp36>
+	    <mxe:c008_cp37> </mxe:c008_cp37>
+	    <mxe:c008_cp38> </mxe:c008_cp38>
+	    <mxe:c008_cp39> </mxe:c008_cp39>
+	  </mxe:controlfield_008>
+	  <mxe:cf008>900921n| acazaaaa|          |a ana      </mxe:cf008>
+	  <mxe:datafield_010 ind1=" " ind2=" ">
+	    <mxe:d010_subfield_a>no 90020105 </mxe:d010_subfield_a>
+	  </mxe:datafield_010>
+	  <mxe:datafield_022 ind1=" " ind2=" ">
+	    <mxe:d022_subfield_a>1105-011X</mxe:d022_subfield_a>
+	  </mxe:datafield_022>
+	  <mxe:datafield_040 ind1=" " ind2=" ">
+	    <mxe:d040_subfield_a>DLC-S</mxe:d040_subfield_a>
+	    <mxe:d040_subfield_c>DLC-S</mxe:d040_subfield_c>
+	  </mxe:datafield_040>
+	  <mxe:datafield_050 ind1=" " ind2=" ">
+	    <mxe:d050_subfield_a>DF901.T75</mxe:d050_subfield_a>
+	    <mxe:d050_subfield_b>T47</mxe:d050_subfield_b>
+	  </mxe:datafield_050>
+	  <mxe:datafield_130 ind1=" " ind2="0">
+	    <mxe:d130_subfield_a>Thrakika (Athens, Greece : 1978)</mxe:d130_subfield_a>
+	  </mxe:datafield_130>
+	  <mxe:datafield_410 ind1="2" ind2="0">
+	    <mxe:d410_subfield_a>Thrakiko Kentro (Athens, Greece).</mxe:d410_subfield_a>
+	    <mxe:d410_subfield_t>Thrakika</mxe:d410_subfield_t>
+	  </mxe:datafield_410>
+	  <mxe:datafield_410 ind1="2" ind2="0">
+	    <mxe:d410_subfield_a>Hetaireia Thrakikōn Meletōn.</mxe:d410_subfield_a>
+	    <mxe:d410_subfield_t>Thrakika</mxe:d410_subfield_t>
+	  </mxe:datafield_410>
+	  <mxe:datafield_530 ind1=" " ind2="0">
+	    <mxe:d530_subfield_w>a</mxe:d530_subfield_w>
+	    <mxe:d530_subfield_a>Thrakika (Athens, Greece : 1928)</mxe:d530_subfield_a>
+	  </mxe:datafield_530>
+	  <mxe:datafield_643 ind1=" " ind2=" ">
+	    <mxe:d643_subfield_a>Athēnai</mxe:d643_subfield_a>
+	    <mxe:d643_subfield_b>Thrakiko Kentro</mxe:d643_subfield_b>
+	  </mxe:datafield_643>
+	  <mxe:datafield_644 ind1=" " ind2=" ">
+	    <mxe:d644_subfield_a>n</mxe:d644_subfield_a>
+	    <mxe:d644_subfield_5>DLC</mxe:d644_subfield_5>
+	  </mxe:datafield_644>
+	  <mxe:datafield_645 ind1=" " ind2=" ">
+	    <mxe:d645_subfield_a>n</mxe:d645_subfield_a>
+	    <mxe:d645_subfield_5>DLC</mxe:d645_subfield_5>
+	  </mxe:datafield_645>
+	  <mxe:datafield_646 ind1=" " ind2=" ">
+	    <mxe:d646_subfield_a>c</mxe:d646_subfield_a>
+	    <mxe:d646_subfield_5>DLC</mxe:d646_subfield_5>
+	  </mxe:datafield_646>
+	  <mxe:datafield_667 ind1=" " ind2=" ">
+	    <mxe:d667_subfield_a>Formed by the union of: Thrakika (Athens, Greece : 1928), and: Archeion Thrakēs [not in LC]</mxe:d667_subfield_a>
+	  </mxe:datafield_667>
+	  <mxe:datafield_670 ind1=" " ind2=" ">
+	    <mxe:d670_subfield_a>Thrakika (Athens, Greece : 1978). Thrakika, T. 1. (1978):</mxe:d670_subfield_a>
+	    <mxe:d670_subfield_b>t.p. (Thrakika : syngramma periodikon ekdidomenon hypo tou en Athēnais "Thrakikou Kentrou" kai tēs "Hetairias Thrakikōn Meletōn") pref. (a continuation of t. 47 of "Thrakika," and t. 39. of "Archeion Thrakēs")</mxe:d670_subfield_b>
+	  </mxe:datafield_670>
+	</mxe:record>
+      </mets:xmlData>
+    </mets:mdWrap>
+  </mets:dmdSec>
+  <mets:dmdSec ID="madsrdf">
+    <mets:mdWrap MDTYPE="OTHER">
+      <mets:xmlData>
+	<rdf:RDF xmlns:rdfs="http://www.w3.org/1999/02/22-rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:identifiers="http://id.loc.gov/vocabulary/identifiers/">
+	  <madsrdf:Title rdf:about="http://id.loc.gov/authorities/names/no90020105">
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Thrakika (Athens, Greece : 1978)</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:MainTitleElement>
+		<madsrdf:elementValue xml:lang="en">Thrakika (Athens, Greece : 1978)</madsrdf:elementValue>
+	      </madsrdf:MainTitleElement>
+	    </madsrdf:elementList>
+	    <madsrdf:isMemberOfMADSCollection rdf:resource="http://id.loc.gov/authorities/names/collection_NamesAuthorizedHeadings"/>
+	    <madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/names"/>
+	    <madsrdf:isMemberOfMADSCollection rdf:resource="http://id.loc.gov/authorities/names/collection_LCNAF"/>
+	    <madsrdf:isMemberOfMADSCollection rdf:resource="http://id.loc.gov/authorities/names/collection_FRBRWork"/>
+	    <madsrdf:hasVariant>
+	      <madsrdf:NameTitle>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Variant"/>
+		<madsrdf:variantLabel xml:lang="en">Thrakiko Kentro (Athens, Greece). Thrakika</madsrdf:variantLabel>
+		<madsrdf:componentList rdf:parseType="Collection">
+		  <madsrdf:CorporateName>
+		    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Variant"/>
+		    <madsrdf:variantLabel xml:lang="en">Thrakiko Kentro (Athens, Greece).</madsrdf:variantLabel>
+		    <madsrdf:elementList rdf:parseType="Collection">
+		      <madsrdf:NameElement>
+			<madsrdf:elementValue xml:lang="en">Thrakiko Kentro (Athens, Greece).</madsrdf:elementValue>
+		      </madsrdf:NameElement>
+		    </madsrdf:elementList>
+		  </madsrdf:CorporateName>
+		  <madsrdf:Title>
+		    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Variant"/>
+		    <madsrdf:variantLabel xml:lang="en">Thrakika</madsrdf:variantLabel>
+		    <madsrdf:elementList rdf:parseType="Collection">
+		      <madsrdf:TitleElement>
+			<madsrdf:elementValue xml:lang="en">Thrakika</madsrdf:elementValue>
+		      </madsrdf:TitleElement>
+		    </madsrdf:elementList>
+		  </madsrdf:Title>
+		</madsrdf:componentList>
+	      </madsrdf:NameTitle>
+	    </madsrdf:hasVariant>
+	    <madsrdf:hasVariant>
+	      <madsrdf:NameTitle>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Variant"/>
+		<madsrdf:variantLabel xml:lang="en">Hetaireia Thrakikōn Meletōn. Thrakika</madsrdf:variantLabel>
+		<madsrdf:componentList rdf:parseType="Collection">
+		  <madsrdf:CorporateName>
+		    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Variant"/>
+		    <madsrdf:variantLabel xml:lang="en">Hetaireia Thrakikōn Meletōn.</madsrdf:variantLabel>
+		    <madsrdf:elementList rdf:parseType="Collection">
+		      <madsrdf:NameElement>
+			<madsrdf:elementValue xml:lang="en">Hetaireia Thrakikōn Meletōn.</madsrdf:elementValue>
+		      </madsrdf:NameElement>
+		    </madsrdf:elementList>
+		  </madsrdf:CorporateName>
+		  <madsrdf:Title>
+		    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Variant"/>
+		    <madsrdf:variantLabel xml:lang="en">Thrakika</madsrdf:variantLabel>
+		    <madsrdf:elementList rdf:parseType="Collection">
+		      <madsrdf:TitleElement>
+			<madsrdf:elementValue xml:lang="en">Thrakika</madsrdf:elementValue>
+		      </madsrdf:TitleElement>
+		    </madsrdf:elementList>
+		  </madsrdf:Title>
+		</madsrdf:componentList>
+	      </madsrdf:NameTitle>
+	    </madsrdf:hasVariant>
+	    <madsrdf:hasEarlierEstablishedForm>
+	      <madsrdf:Title>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Variant"/>
+		<madsrdf:variantLabel xml:lang="en">Thrakika (Athens, Greece : 1928)</madsrdf:variantLabel>
+		<madsrdf:elementList rdf:parseType="Collection">
+		  <madsrdf:MainTitleElement>
+		    <madsrdf:elementValue xml:lang="en">Thrakika (Athens, Greece : 1928)</madsrdf:elementValue>
+		  </madsrdf:MainTitleElement>
+		</madsrdf:elementList>
+	      </madsrdf:Title>
+	    </madsrdf:hasEarlierEstablishedForm>
+	    <madsrdf:hasSource>
+	      <madsrdf:Source>
+		<madsrdf:citation-source>Thrakika (Athens, Greece : 1978). Thrakika, T. 1. (1978):</madsrdf:citation-source>
+		<madsrdf:citation-note xml:lang="en">t.p. (Thrakika : syngramma periodikon ekdidomenon hypo tou en Athēnais "Thrakikou Kentrou" kai tēs "Hetairias Thrakikōn Meletōn") pref. (a continuation of t. 47 of "Thrakika," and t. 39. of "Archeion Thrakēs")</madsrdf:citation-note>
+		<madsrdf:citation-status>found</madsrdf:citation-status>
+	      </madsrdf:Source>
+	    </madsrdf:hasSource>
+	    <madsrdf:editorialNote>[Formed by the union of: Thrakika (Athens, Greece : 1928), and: Archeion Thrakēs [not in LC]]</madsrdf:editorialNote>
+	    <identifiers:lccn>no 90020105</identifiers:lccn>
+	    <madsrdf:adminMetadata>
+	      <ri:RecordInfo>
+		<ri:recordChangeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1990-09-21T00:00:00</ri:recordChangeDate>
+		<ri:recordStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">new</ri:recordStatus>
+		<ri:recordContentSource rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcs"/>
+	      </ri:RecordInfo>
+	    </madsrdf:adminMetadata>
+	  </madsrdf:Title>
+	</rdf:RDF>
+      </mets:xmlData>
+    </mets:mdWrap>
+  </mets:dmdSec>
+  <mets:dmdSec ID="semtriples">
+    <mets:mdWrap MDTYPE="OTHER">
+      <mets:xmlData>
+	<sem:triples>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+	    <sem:object>http://www.loc.gov/mads/rdf/v1#Title</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+	    <sem:object>http://www.loc.gov/mads/rdf/v1#Authority</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#authoritativeLabel</sem:predicate>
+	    <sem:object xml:lang="en">Thrakika (Athens, Greece : 1978)</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#generalLabel</sem:predicate>
+	    <sem:object xml:lang="en">Thrakika (Athens, Greece : 1978)</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#hasEarlierEstablishedForm</sem:predicate>
+	    <sem:object>http://marklogic.com/semantics/blank/5993981179492260119</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://marklogic.com/semantics/blank/5993981179492260119</sem:subject>
+	    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+	    <sem:object>http://www.loc.gov/mads/rdf/v1#Title</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://marklogic.com/semantics/blank/5993981179492260119</sem:subject>
+	    <sem:predicate>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</sem:predicate>
+	    <sem:object>http://www.loc.gov/mads/rdf/v1#Variant</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://marklogic.com/semantics/blank/5993981179492260119</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#variantLabel</sem:predicate>
+	    <sem:object xml:lang="en">Thrakika (Athens, Greece : 1928)</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme</sem:predicate>
+	    <sem:object>http://id.loc.gov/authorities/names</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#isMemberOfMADSCollection</sem:predicate>
+	    <sem:object>http://id.loc.gov/authorities/names/collection_NamesAuthorizedHeadings</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#isMemberOfMADSCollection</sem:predicate>
+	    <sem:object>http://id.loc.gov/authorities/names/collection_LCNAF</sem:object>
+	  </sem:triple>
+	  <sem:triple>
+	    <sem:subject>http://id.loc.gov/authorities/names/no90020105</sem:subject>
+	    <sem:predicate>http://www.loc.gov/mads/rdf/v1#isMemberOfMADSCollection</sem:predicate>
+	    <sem:object>http://id.loc.gov/authorities/names/collection_FRBRWork</sem:object>
+	  </sem:triple>
+	</sem:triples>
+      </mets:xmlData>
+    </mets:mdWrap>
+  </mets:dmdSec>
+  <mets:dmdSec ID="index">
+    <mets:mdWrap MDTYPE="OTHER">
+      <mets:xmlData>
+	<index:index xmlns:index="info:lc/xq-modules/lcindex">
+	  <index:uri>http://id.loc.gov/authorities/names/no90020105</index:uri>
+	  <index:token>no90020105</index:token>
+	  <index:scheme>http://id.loc.gov/authorities/names</index:scheme>
+	  <index:memberOfURI>http://id.loc.gov/authorities/names/collection_NamesAuthorizedHeadings</index:memberOfURI>
+	  <index:memberOfURI>http://id.loc.gov/authorities/names/collection_LCNAF</index:memberOfURI>
+	  <index:memberOfURI>http://id.loc.gov/authorities/names/collection_FRBRWork</index:memberOfURI>
+	  <index:rdftype>Title</index:rdftype>
+	  <index:rdftype>SimpleType</index:rdftype>
+	  <index:rdftype>Authority</index:rdftype>
+	  <index:aLabel xml:lang="en">Thrakika (Athens, Greece : 1978)</index:aLabel>
+	  <index:vLabel xml:lang="en">Thrakiko Kentro (Athens, Greece). Thrakika</index:vLabel>
+	  <index:vLabel xml:lang="en">Hetaireia Thrakikōn Meletōn. Thrakika</index:vLabel>
+	  <index:relation relType="hasEarlierEstablishedForm" xml:lang="en">Thrakika (Athens, Greece : 1928)</index:relation>
+	  <index:cDate>1990-09-21</index:cDate>
+	  <index:status>new</index:status>
+	  <index:contentSource>http://id.loc.gov/vocabulary/organizations/dlcs</index:contentSource>
+	</index:index>
+      </mets:xmlData>
+    </mets:mdWrap>
+  </mets:dmdSec>
+  <mets:structMap>
+    <mets:div TYPE="authRecord" DMDID="marcxml mxe madsrdf semtriples index"/>
+  </mets:structMap>
+</mets:mets>

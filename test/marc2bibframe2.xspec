@@ -36,6 +36,11 @@
           <bf:Work rdf:about="http://example.org/13600108#Work">
             <bf:adminMetadata>
               <bf:AdminMetadata>
+                <bf:generationProcess>
+                  <bf:GenerationProcess>
+                    <rdfs:label>DLC marc2bibframe2 v1.3.0-SNAPSHOT</rdfs:label>
+                  </bf:GenerationProcess>
+                </bf:generationProcess>
                 <bf:status>
                   <bf:Status>
                     <bf:code>c</bf:code>
@@ -236,6 +241,11 @@
           <bf:Work rdf:about="http://example.org/5637241#Work">
             <bf:adminMetadata>
               <bf:AdminMetadata>
+                <bf:generationProcess>
+                  <bf:GenerationProcess>
+                    <rdfs:label>DLC marc2bibframe2 v1.3.0-SNAPSHOT</rdfs:label>
+                  </bf:GenerationProcess>
+                </bf:generationProcess>
                 <bf:status>
                   <bf:Status>
                     <bf:code>n</bf:code>
@@ -480,6 +490,11 @@
           <bf:Work rdf:about="http://example.org/12149120#Work">
             <bf:adminMetadata>
               <bf:AdminMetadata>
+                <bf:generationProcess>
+                  <bf:GenerationProcess>
+                    <rdfs:label>DLC marc2bibframe2 v1.3.0-SNAPSHOT</rdfs:label>
+                  </bf:GenerationProcess>
+                </bf:generationProcess>
                 <bf:status>
                   <bf:Status>
                     <bf:code>c</bf:code>
@@ -793,8 +808,13 @@
   </x:scenario>
 
   <x:scenario label="Record ID">
+    <x:context href="data/marc_url_encode.xml"/>
+    <x:expect label="by default URL-encoded value of MARC control field 001" test="//bf:Work/@rdf:about = 'http://example.org/13600108%20(url-enc%3Fde%20test%3A%20%231)#Work'"/>
+  </x:scenario>
+
+  <x:scenario label="Generation Process">
     <x:context href="data/marc.xml"/>
-    <x:expect label="by default value of MARC control field 001" test="//bf:Work/@rdf:about = 'http://example.org/13600108#Work'"/>
+    <x:expect label="Work/adminMetadata/AdminMetadata should have generationProcess property" test="starts-with(//bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:generationProcess/bf:GenerationProcess/rdfs:label,'DLC marc2bibframe2')"/>
   </x:scenario>
 
 </x:description>

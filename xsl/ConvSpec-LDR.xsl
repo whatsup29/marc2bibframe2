@@ -14,11 +14,12 @@
   -->
 
   <xsl:template match="marc:leader" mode="adminmetadata">
+    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
     <xsl:choose>
       <xsl:when test="$serialization = 'rdfxml'">
         <xsl:choose>
-          <xsl:when test="substring(.,6,1) = 'a'">
+          <xsl:when test="substring(.,6,1) = 'a' and $recordtype='Bibliographic'">
             <bf:status>
               <bf:Status>
                 <bf:code>c</bf:code>
@@ -32,6 +33,13 @@
               </bf:Status>
             </bf:status>
           </xsl:when>
+	  <xsl:when test="substring(.,6,1) = 'd' and $recordtype='NameTitleAuth'">
+            <bf:status>
+              <bf:Status>
+                <bf:code>d</bf:code>
+              </bf:Status>
+            </bf:status>
+          </xsl:when>
           <xsl:when test="substring(.,6,1) = 'n'">
             <bf:status>
               <bf:Status>
@@ -39,7 +47,7 @@
               </bf:Status>
             </bf:status>
           </xsl:when>
-          <xsl:when test="substring(.,6,1) = 'p'">
+          <xsl:when test="substring(.,6,1) = 'p' and $recordtype='Bibliographic'">
             <bf:status>
               <bf:Status>
                 <bf:code>p</bf:code>
@@ -47,69 +55,92 @@
             </bf:status>
           </xsl:when>
         </xsl:choose>
-        <bflc:encodingLevel>
-          <bflc:EncodingLevel>
-            <bf:code>
-              <xsl:choose>
-                <xsl:when test="substring(.,18,1) = ' '">f</xsl:when>
-                <xsl:when test="substring(.,18,1) = '1'">1</xsl:when>
-                <xsl:when test="substring(.,18,1) = '2'">7</xsl:when>
-                <xsl:when test="substring(.,18,1) = '3'">3</xsl:when>
-                <xsl:when test="substring(.,18,1) = '4'">4</xsl:when>
-                <xsl:when test="substring(.,18,1) = '5'">5</xsl:when>
-                <xsl:when test="substring(.,18,1) = '7'">7</xsl:when>
-                <xsl:when test="substring(.,18,1) = '8'">8</xsl:when>
-                <xsl:otherwise>u</xsl:otherwise>
-              </xsl:choose>
-            </bf:code>
-          </bflc:EncodingLevel>
-        </bflc:encodingLevel>
-        <bf:descriptionConventions>
-          <bf:DescriptionConventions>
-            <bf:code>
-              <xsl:choose>
-                <xsl:when test="substring(.,19,1) = 'a'">aacr</xsl:when>
-                <xsl:when test="substring(.,19,1) = 'c'">isbd</xsl:when>
-                <xsl:when test="substring(.,19,1) = 'i'">isbd</xsl:when>
-                <xsl:when test="substring(.,19,1) = 'p'">aacr</xsl:when>
-                <xsl:when test="substring(.,19,1) = 'r'">aacr</xsl:when>
-                <xsl:otherwise>unknown</xsl:otherwise>
-              </xsl:choose>
-            </bf:code>
-          </bf:DescriptionConventions>
-        </bf:descriptionConventions>
+        <xsl:choose>
+          <xsl:when test="$recordtype='Bibliographic'">
+            <bflc:encodingLevel>
+              <bflc:EncodingLevel>
+                <bf:code>
+                  <xsl:choose>
+                    <xsl:when test="substring(.,18,1) = ' '">f</xsl:when>
+                    <xsl:when test="substring(.,18,1) = '1'">1</xsl:when>
+                    <xsl:when test="substring(.,18,1) = '2'">7</xsl:when>
+                    <xsl:when test="substring(.,18,1) = '3'">3</xsl:when>
+                    <xsl:when test="substring(.,18,1) = '4'">4</xsl:when>
+                    <xsl:when test="substring(.,18,1) = '5'">5</xsl:when>
+                    <xsl:when test="substring(.,18,1) = '7'">7</xsl:when>
+                    <xsl:when test="substring(.,18,1) = '8'">8</xsl:when>
+                    <xsl:otherwise>u</xsl:otherwise>
+                  </xsl:choose>
+                </bf:code>
+              </bflc:EncodingLevel>
+            </bflc:encodingLevel>
+          </xsl:when>
+          <xsl:when test="$recordtype='NameTitleAuth'">
+            <xsl:if test="substring(.,18,1)='n' or substring(.,18,1)='o'">
+              <bflc:encodingLevel>
+                <bflc:EncodingLevel>
+                  <bf:code>
+                    <xsl:choose>
+                      <xsl:when test="substring(.,18,1)='n'">4</xsl:when>
+                      <xsl:when test="substring(.,18,1)='o'">7</xsl:when>
+                    </xsl:choose>
+                </bf:code>
+              </bflc:EncodingLevel>
+            </bflc:encodingLevel>
+            </xsl:if>
+          </xsl:when>
+        </xsl:choose>
+        <xsl:if test="$recordtype='Bibliographic'">
+          <bf:descriptionConventions>
+            <bf:DescriptionConventions>
+              <bf:code>
+                <xsl:choose>
+                  <xsl:when test="substring(.,19,1) = 'a'">aacr</xsl:when>
+                  <xsl:when test="substring(.,19,1) = 'c'">isbd</xsl:when>
+                  <xsl:when test="substring(.,19,1) = 'i'">isbd</xsl:when>
+                  <xsl:when test="substring(.,19,1) = 'p'">aacr</xsl:when>
+                  <xsl:when test="substring(.,19,1) = 'r'">aacr</xsl:when>
+                  <xsl:otherwise>unknown</xsl:otherwise>
+                </xsl:choose>
+              </bf:code>
+            </bf:DescriptionConventions>
+          </bf:descriptionConventions>
+        </xsl:if>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
 
   <xsl:template match="marc:leader" mode="work">
+    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
-    <xsl:choose>
-      <xsl:when test="$serialization = 'rdfxml'">
-        <xsl:variable name="workType">
-          <xsl:choose>
-            <xsl:when test="substring(.,7,1) = 'a'">Text</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'c'">NotatedMusic</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'd'">NotatedMusic</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'e'">Cartography</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'f'">Cartography</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'g'">MovingImage</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'i'">Audio</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'j'">Audio</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'k'">StillImage</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'o'">MixedMaterial</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'p'">MixedMaterial</xsl:when>
-            <xsl:when test="substring(.,7,1) = 'r'">Object</xsl:when>
-            <xsl:when test="substring(.,7,1) = 't'">Text</xsl:when>
-          </xsl:choose>
-        </xsl:variable>
-        <xsl:if test="$workType != ''">
-          <rdf:type>
-            <xsl:attribute name="rdf:resource"><xsl:value-of select="concat($bf,$workType)"/></xsl:attribute>
-          </rdf:type>
-        </xsl:if>
-      </xsl:when>
-    </xsl:choose>
+    <xsl:if test="$recordtype='Bibliographic'">
+      <xsl:choose>
+        <xsl:when test="$serialization = 'rdfxml'">
+          <xsl:variable name="workType">
+            <xsl:choose>
+              <xsl:when test="substring(.,7,1) = 'a'">Text</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'c'">NotatedMusic</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'd'">NotatedMusic</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'e'">Cartography</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'f'">Cartography</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'g'">MovingImage</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'i'">Audio</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'j'">Audio</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'k'">StillImage</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'o'">MixedMaterial</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'p'">MixedMaterial</xsl:when>
+              <xsl:when test="substring(.,7,1) = 'r'">Object</xsl:when>
+              <xsl:when test="substring(.,7,1) = 't'">Text</xsl:when>
+            </xsl:choose>
+          </xsl:variable>
+          <xsl:if test="$workType != ''">
+            <rdf:type>
+              <xsl:attribute name="rdf:resource"><xsl:value-of select="concat($bf,$workType)"/></xsl:attribute>
+            </rdf:type>
+          </xsl:if>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="marc:leader" mode="instance">

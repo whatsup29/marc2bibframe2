@@ -15,7 +15,7 @@
 
   <xsl:include href="xsl/utils.xsl"/>
   <xsl:include href="xsl/ConvSpec-ControlSubfields.xsl"/>
-  <xsl:include href="authxsl/ConvSpec-LDR.xsl"/>
+  <xsl:include href="xsl/ConvSpec-LDR.xsl"/>
   <!--007 is not in auths; ok to run this from bibs; no other changes
 		  when 003 is updated for bibs (agent in source)  can go back to using this from xsl
 		  -->
@@ -127,40 +127,69 @@
         <xsl:with-param name="recordno" select="$recordno"/>
       </xsl:apply-templates>
     </xsl:variable>
+    <!-- legal values for LDR/06 in bib records -->
+    <xsl:variable name="vBibLevelCodes">acdefgijkmoprt</xsl:variable>
+    <xsl:variable name="vRecordType">
+      <xsl:choose>
+        <xsl:when test="substring(marc:leader,7,1)='z'
+                          and substring(marc:controlfield[@tag='008'],15,1)='a'
+                          and (marc:datafield[@tag='100']/marc:subfield[@code='t']
+                                 or marc:datafield[@tag='110']/marc:subfield[@code='t']
+                                 or marc:datafield[@tag='111']/marc:subfield[@code='t']
+                                 or marc:datafield[@tag='130'])">NameTitleAuth</xsl:when>
+        <xsl:when test="contains($vBibLevelCodes, substring(marc:leader,7,1))">Bibliographic</xsl:when>
+        <xsl:otherwise>Unknown</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
 
-    <!-- generate main Work entity -->
     <xsl:choose>
-      <xsl:when test="$serialization = 'rdfxml' ">
-        <bf:Work>
-          <xsl:attribute name="rdf:about"><xsl:value-of select="translate($recordid,' ','')"/>#Work</xsl:attribute>
+      <xsl:when test="$vRecordType='NameTitleAuth'">
 
-          <!-- pass fields through conversion specs for Work properties 
-					except 400? -->
-          <!-- lccns in 001 have spaces; fix with translate -->
-          <xsl:apply-templates mode="work">
-            <xsl:with-param name="recordid" select="translate($recordid,' ','')"/>
-            <xsl:with-param name="serialization" select="$serialization"/>
-          </xsl:apply-templates>
+        <!-- generate main Work entity -->
+        <xsl:choose>
+          <xsl:when test="$serialization = 'rdfxml' ">
+            <bf:Work>
+              <xsl:attribute name="rdf:about"><xsl:value-of select="translate($recordid,' ','')"/>#Work</xsl:attribute>
 
-          <bf:adminMetadata>
-            <bf:AdminMetadata>
-
-              <!-- pass fields through conversion specs for AdminMetadata properties -->
-              <xsl:apply-templates mode="adminmetadata">
+              <!-- pass fields through conversion specs for Work properties 
+		   except 400? -->
+              <!-- lccns in 001 have spaces; fix with translate -->
+              <xsl:apply-templates mode="work">
+                <xsl:with-param name="recordid" select="translate($recordid,' ','')"/>
+                <xsl:with-param name="recordtype" select="$vRecordType"/>
                 <xsl:with-param name="serialization" select="$serialization"/>
               </xsl:apply-templates>
-              <bf:generationProcess>
-                <bf:GenerationProcess>
-                  <rdfs:label>
-                    <xsl:value-of select="concat('DLC MAuth2BF transform-tool: ' ,$last-edit)"/>
-                  </rdfs:label>
-                </bf:GenerationProcess>
-              </bf:generationProcess>
-            </bf:AdminMetadata>
-          </bf:adminMetadata>
 
-        </bf:Work>
+              <bf:adminMetadata>
+                <bf:AdminMetadata>
+
+                  <!-- pass fields through conversion specs for AdminMetadata properties -->
+                  <xsl:apply-templates mode="adminmetadata">
+                    <xsl:with-param name="recordtype" select="$vRecordType"/>
+                    <xsl:with-param name="serialization" select="$serialization"/>
+                  </xsl:apply-templates>
+                  <bf:generationProcess>
+                    <bf:GenerationProcess>
+                      <rdfs:label>
+                        <xsl:value-of select="concat('DLC MAuth2BF transform-tool: ' ,$last-edit)"/>
+                      </rdfs:label>
+                    </bf:GenerationProcess>
+                  </bf:generationProcess>
+                </bf:AdminMetadata>
+              </bf:adminMetadata>
+
+            </bf:Work>
+          </xsl:when>
+        </xsl:choose>
+
       </xsl:when>
+
+      <xsl:otherwise>
+        <xsl:message terminate="no">
+          WARNING: Unable to process record at position <xsl:value-of select="$recordno"/> (<xsl:value-of select="$vRecordType"/> record type)
+        </xsl:message>
+      </xsl:otherwise>
+
     </xsl:choose>
 
   </xsl:template>

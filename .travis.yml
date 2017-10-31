@@ -27,3 +27,4 @@ script:
     - /tmp/xspec/bin/xspec.sh $TRAVIS_BUILD_DIR/test/ConvSpec-841-887.xspec
     - /tmp/xspec/bin/xspec.sh $TRAVIS_BUILD_DIR/test/ConvSpec-880.xspec
     - /tmp/xspec/bin/xspec.sh $TRAVIS_BUILD_DIR/test/ConvSpec-LDR.xspec
+    - /tmp/xspec/bin/xspec.sh $TRAVIS_BUILD_DIR/test/auth2bibframe2.xspec

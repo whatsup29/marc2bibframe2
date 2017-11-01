@@ -9,6 +9,8 @@
                xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
                stylesheet="../auth2bibframe2.xsl" xslt-version="1.0">
 
+  <x:import href="ConvSpec-AuthWorks.xspec"/>
+
   <x:scenario label="Regression">
     <x:scenario label="Simple transform">
       <x:context href="data/auths/no90020105.xml"/>

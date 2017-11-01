@@ -169,14 +169,13 @@
                 <bf:identifiedBy>
                   <bf:Local>
                     <rdf:value>no90020105</rdf:value>
+                    <bf:source>
+                      <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
+                    </bf:source>
                   </bf:Local>
                 </bf:identifiedBy>
                 <bf:source>
-                  <bf:Source>
-                    <bf:agent>
-                      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-                    </bf:agent>
-                  </bf:Source>
+                  <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
                 </bf:source>
                 <bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1990-09-28T05:34:07</bf:changeDate>
                 <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-09-21</bf:creationDate>

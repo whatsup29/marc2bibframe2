@@ -11,10 +11,14 @@
                xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
                stylesheet="../auth2bibframe2.xsl" xslt-version="1.0">
 
-  <x:scenario label="Name/Title LDR">
+  <x:scenario label="Name/Title LDR and control fields">
     <x:context href="data/ConvSpec-AuthWorks/marc.xml"/>
-    <x:expect label="pos 6 sets the status property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:status/bf:Status/bf:code='n'"/>
-    <x:expect label="pos 17 sets the bflc:encodingLevel property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code='4'"/>
+    <x:expect label="LDR/06 sets the status property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:status/bf:Status/bf:code='n'"/>
+    <x:expect label="LDR/17 sets the bflc:encodingLevel property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code='4'"/>
+    <x:expect label="001 should set the AdminMetadata identifiedBy property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value = '1'"/>
+    <x:expect label="...with source property of Local set by 003" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/bf:source/bf:Source/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
+    <x:expect label="003 should set the AdminMetadata source property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:source/bf:Source/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
+    <x:expect label="005 should set the AdminMetadata changeDate property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:changeDate[@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime']  = '1990-09-28T05:34:07'"/>
   </x:scenario>
 
 </x:description>

@@ -14,19 +14,31 @@
   -->
 
   <xsl:template match="marc:controlfield[@tag='001']" mode="adminmetadata">
+    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
     <xsl:choose>
       <xsl:when test="$serialization= 'rdfxml'">
         <bf:identifiedBy>
           <bf:Local>
             <rdf:value><xsl:value-of select="."/></rdf:value>
-            <xsl:if test="$idsource != ''">
-              <bf:source>
-                <bf:Source>
-                  <xsl:attribute name="rdf:about"><xsl:value-of select="$idsource"/></xsl:attribute>
-                </bf:Source>
-              </bf:source>
-            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="$recordtype='NameTitleAuth'">
+                <xsl:if test="../marc:controlfield[@tag='003']">
+                  <xsl:apply-templates select="../marc:controlfield[@tag='003']" mode="adminmetadata">
+                    <xsl:with-param name="serialization" select="$serialization"/>
+                  </xsl:apply-templates>
+                </xsl:if>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:if test="$idsource != ''">
+                  <bf:source>
+                    <bf:Source>
+                      <xsl:attribute name="rdf:about"><xsl:value-of select="$idsource"/></xsl:attribute>
+                    </bf:Source>
+                  </bf:source>
+                </xsl:if>
+              </xsl:otherwise>
+            </xsl:choose>
           </bf:Local>
         </bf:identifiedBy>
       </xsl:when>
@@ -35,11 +47,21 @@
 
   <xsl:template match="marc:controlfield[@tag='003']" mode="adminmetadata">
     <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:variable name="vUpper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+    <xsl:variable name="vLower" select="'abcdefghijklmnopqrstuvwxyz'"/>
     <xsl:choose>
       <xsl:when test="$serialization= 'rdfxml'">
         <bf:source>
           <bf:Source>
-            <bf:code><xsl:value-of select="."/></bf:code>
+            <!-- trick to generate URI for DLC -->
+	    <xsl:choose>
+	      <xsl:when test="starts-with(.,'DLC')">
+		<xsl:attribute name="rdf:about"><xsl:value-of select="concat($organizations,translate(.,concat($vUpper,'- ' ),$vLower))"/></xsl:attribute>
+	      </xsl:when>
+	      <xsl:otherwise>
+            	<bf:code><xsl:value-of select="."/></bf:code>
+	      </xsl:otherwise>
+	    </xsl:choose>                          
           </bf:Source>
         </bf:source>
       </xsl:when>

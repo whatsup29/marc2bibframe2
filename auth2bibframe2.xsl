@@ -7,6 +7,7 @@
   <xsl:param name="baseuri" select="'http://id.loc.gov/resources/works/'"/>
   <xsl:param name="idfield" select="'001'"/>
   <xsl:param name="serialization" select="'rdfxml'"/>
+  <xsl:param name="idsource"/>
 
   <xsl:variable name="vUpper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
   <xsl:variable name="vLower" select="'abcdefghijklmnopqrstuvwxyz'"/>
@@ -16,10 +17,7 @@
   <xsl:include href="xsl/utils.xsl"/>
   <xsl:include href="xsl/ConvSpec-ControlSubfields.xsl"/>
   <xsl:include href="xsl/ConvSpec-LDR.xsl"/>
-  <!--007 is not in auths; ok to run this from bibs; no other changes
-		  when 003 is updated for bibs (agent in source)  can go back to using this from xsl
-		  -->
-  <xsl:include href="authxsl/ConvSpec-001-007.xsl"/>
+  <xsl:include href="xsl/ConvSpec-001-007.xsl"/>
   <xsl:include href="authxsl/ConvSpec-006-008.xsl"/>
   <xsl:include href="authxsl/ConvSpec-010-048.xsl"/>
   <xsl:include href="authxsl/ConvSpec-050-088.xsl"/>

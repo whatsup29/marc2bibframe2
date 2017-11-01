@@ -267,9 +267,7 @@
                   </bf:Local>
                 </bf:identifiedBy>
                 <bf:source>
-                  <bf:Source>
-                    <bf:code>DLC</bf:code>
-                  </bf:Source>
+                  <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
                 </bf:source>
                 <bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1992-08-26T08:40:36</bf:changeDate>
                 <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1991-09-26</bf:creationDate>

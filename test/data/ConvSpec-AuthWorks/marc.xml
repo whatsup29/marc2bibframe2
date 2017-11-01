@@ -2,6 +2,8 @@
   <record>
     <leader>01001nz  a2200241n  4500</leader>
     <controlfield tag="001">1</controlfield>
+    <controlfield tag="003">DLC</controlfield>
+    <controlfield tag="005">19900928053407.1</controlfield>
     <controlfield tag="008">900921n| acazaaaa|          |a ana      </controlfield>
     <datafield tag="130" ind1=" " ind2="0">
       <subfield code="a">Thrakika (Athens, Greece : 1978)</subfield>

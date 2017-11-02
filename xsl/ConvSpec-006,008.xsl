@@ -211,6 +211,21 @@
     <w href="http://id.loc.gov/vocabulary/marcgt/toy">toy</w>
   </local:visualtype>
 
+  <local:descriptionConventions>
+    <a href="http://id.loc.gov/vocabulary/descriptionConventions/ala">ALA</a>
+    <b href="http://id.loc.gov/vocabulary/descriptionConventions/aacr">AACR 1</b>
+    <c href="http://id.loc.gov/vocabulary/descriptionConventions/aacr">AACR 2</c>
+    <d href="http://id.loc.gov/vocabulary/descriptionConventions/aacr">AACR 2 compatible</d>
+  </local:descriptionConventions>
+
+  <local:issuance>           
+    <a href="http://id.loc.gov/vocabulary/issuance/sers">Monographic series</a>
+    <b href="http://id.loc.gov/vocabulary/issuance/mulm">Multipart item</b>    
+    <c href="http://id.loc.gov/vocabulary/issuance/mono">Series-like phrase</c>    
+    <n href="http://id.loc.gov/vocabulary/issuance/mono">Not applicable</n>
+    <z href="http://id.loc.gov/vocabulary/issuance/sers">Other</z>
+  </local:issuance>
+
   <xsl:template match="marc:controlfield[@tag='006']" mode="adminmetadata">
     <xsl:param name="serialization" select="'rdfxml'"/>
     <!-- continuing resources -->
@@ -225,6 +240,7 @@
   </xsl:template>
   
   <xsl:template match="marc:controlfield[@tag='008']" mode="adminmetadata">
+    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
     <xsl:variable name="marcYear" select="substring(.,1,2)"/>
     <xsl:variable name="creationYear">
@@ -241,8 +257,9 @@
         </bf:creationDate>
       </xsl:when>
     </xsl:choose>
-    <!-- continuing resources -->
-    <xsl:if test="substring(../marc:leader,7,1) = 'a' and
+    <!-- continuing resources in bibliographic records -->
+    <xsl:if test="$recordtype = 'Bibliographic' and
+                  substring(../marc:leader,7,1) = 'a' and
                   (substring(../marc:leader,8,1) = 'b' or
                    substring(../marc:leader,8,1) = 'i' or
                    substring(../marc:leader,8,1) = 's')">
@@ -252,6 +269,19 @@
           <xsl:with-param name="code" select="substring(.,35,1)"/>
         </xsl:call-template>
       </xsl:if>
+    </xsl:if>
+    <!-- descriptionConventions in name/title authorities -->
+    <xsl:if test="$recordtype='NameTitleAuth'">
+      <xsl:variable  name="descConv" select="substring(.,11,1)"/>
+      <xsl:for-each select="document('')/*/local:descriptionConventions/*[name() = $descConv]">
+        <xsl:choose>
+          <xsl:when test="$serialization = 'rdfxml'">
+            <bf:descriptionConventions>            
+              <xsl:attribute name="rdf:resource"><xsl:value-of select="@href"/></xsl:attribute>
+            </bf:descriptionConventions>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:for-each>
     </xsl:if>
   </xsl:template>
 
@@ -338,26 +368,35 @@
   </xsl:template>
 
   <xsl:template match="marc:controlfield[@tag='008']" mode="work">
+    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
-    <xsl:variable name="language">
+    <xsl:if test="$recordtype='Bibliographic'">
+      <xsl:variable name="language">
+        <xsl:choose>
+          <xsl:when test="substring(.,36,3) = '   '"/>
+          <xsl:when test="substring(.,36,3) = '|||'"/>
+          <xsl:otherwise><xsl:value-of select="substring(.,36,3)"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
       <xsl:choose>
-        <xsl:when test="substring(.,36,3) = '   '"/>
-        <xsl:when test="substring(.,36,3) = '|||'"/>
-        <xsl:otherwise><xsl:value-of select="substring(.,36,3)"/></xsl:otherwise>
+        <xsl:when test="$serialization = 'rdfxml'">
+          <xsl:if test="$language != ''">
+            <bf:language>
+              <bf:Language>
+                <xsl:attribute name="rdf:about"><xsl:value-of select="concat($languages,$language)"/></xsl:attribute>
+              </bf:Language>
+            </bf:language>
+          </xsl:if>
+        </xsl:when>
       </xsl:choose>
-    </xsl:variable>
+    </xsl:if>
     <xsl:choose>
-      <xsl:when test="$serialization = 'rdfxml'">
-        <xsl:if test="$language != ''">
-          <bf:language>
-            <bf:Language>
-              <xsl:attribute name="rdf:about"><xsl:value-of select="concat($languages,$language)"/></xsl:attribute>
-            </bf:Language>
-          </bf:language>
-        </xsl:if>
+      <!-- name/title authority records -->
+      <xsl:when test="$recordtype='NameTitleAuth'">
+        <xsl:apply-templates select="." mode="nameTitle008">
+          <xsl:with-param name="serialization" select="$serialization"/>
+        </xsl:apply-templates>
       </xsl:when>
-    </xsl:choose>
-    <xsl:choose>
       <!-- books -->
       <xsl:when test="(substring(../marc:leader,7,1) = 'a' or substring(../marc:leader,7,1 = 't')) and
                       (substring(../marc:leader,8,1) = 'a' or substring(../marc:leader,8,1) = 'c' or substring(../marc:leader,8,1) = 'd' or substring(../marc:leader,8,1) = 'm')">
@@ -411,6 +450,33 @@
         </xsl:call-template>
       </xsl:when>
     </xsl:choose>
+  </xsl:template>
+
+  <!-- data elements for name/title authorities -->
+  <xsl:template match="marc:controlfield[@tag='008']" mode="nameTitle008">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:variable name="issuance">
+      <xsl:choose> <!-- nac=mono -->
+	<xsl:when test="substring(.,13,1) = ' '">c</xsl:when>
+	<xsl:when test="substring(.,13,1) = '|'">c</xsl:when>
+	<xsl:otherwise>
+	  <xsl:value-of select="substring(.,13,1)"/>     
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="$serialization = 'rdfxml'">       
+	<xsl:if test="$issuance != ''">				
+	  <xsl:for-each select="document('')/*/local:issuance/*[name() = $issuance]">
+            <bf:issuance>
+              <bf:Issuance>
+                <xsl:attribute name="rdf:about"><xsl:value-of select="@href"/></xsl:attribute>
+              </bf:Issuance>
+            </bf:issuance>
+          </xsl:for-each>
+        </xsl:if>
+      </xsl:when>
+    </xsl:choose>   
   </xsl:template>
 
   <!-- data elements for books -->

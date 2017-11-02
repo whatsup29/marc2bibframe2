@@ -19,6 +19,9 @@
     <x:expect label="...with source property of Local set by 003" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/bf:source/bf:Source/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
     <x:expect label="003 should set the AdminMetadata source property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:source/bf:Source/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
     <x:expect label="005 should set the AdminMetadata changeDate property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:changeDate[@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime']  = '1990-09-28T05:34:07'"/>
+    <x:expect label="008/00-05 sets the creationDate property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:creationDate[@rdf:datatype='http://www.w3.org/2001/XMLSchema#date']='1990-09-21'"/>
+    <x:expect label="008/10 sets the descriptionConventions property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/@rdf:resource='http://id.loc.gov/vocabulary/descriptionConventions/aacr'"/>
+    <x:expect label="008/12 creates an issuance property of the Work"  test="//bf:Work[1]/bf:issuance/bf:Issuance/@rdf:about='http://id.loc.gov/vocabulary/issuance/sers'"/>
   </x:scenario>
 
 </x:description>

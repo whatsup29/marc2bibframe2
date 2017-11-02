@@ -18,7 +18,7 @@
   <xsl:include href="xsl/ConvSpec-ControlSubfields.xsl"/>
   <xsl:include href="xsl/ConvSpec-LDR.xsl"/>
   <xsl:include href="xsl/ConvSpec-001-007.xsl"/>
-  <xsl:include href="authxsl/ConvSpec-006-008.xsl"/>
+  <xsl:include href="xsl/ConvSpec-006,008.xsl"/>
   <xsl:include href="authxsl/ConvSpec-010-048.xsl"/>
   <xsl:include href="authxsl/ConvSpec-050-088.xsl"/>
   <xsl:include href="authxsl/ConvSpec-1XX,6XX,7XX,8XX-names.xsl"/>

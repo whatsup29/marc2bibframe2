@@ -8,6 +8,7 @@
   <xsl:param name="idfield" select="'001'"/>
   <xsl:param name="serialization" select="'rdfxml'"/>
   <xsl:param name="idsource"/>
+  <xsl:param name="removeidspaces" select="true()"/>
 
   <xsl:variable name="vUpper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
   <xsl:variable name="vLower" select="'abcdefghijklmnopqrstuvwxyz'"/>
@@ -119,11 +120,23 @@
       <xsl:value-of select="position()"/>
     </xsl:variable>
     <xsl:variable name="recordid">
-      <xsl:apply-templates mode="recordid" select=".">
-        <xsl:with-param name="baseuri" select="$baseuri"/>
-        <xsl:with-param name="idfield" select="$idfield"/>
-        <xsl:with-param name="recordno" select="$recordno"/>
-      </xsl:apply-templates>
+      <xsl:choose>
+        <xsl:when test="$removeidspaces">
+          <xsl:apply-templates mode="recordid" select=".">
+            <xsl:with-param name="baseuri" select="$baseuri"/>
+            <xsl:with-param name="idfield" select="$idfield"/>
+            <xsl:with-param name="recordno" select="$recordno"/>
+            <xsl:with-param name="pRemoveSpaces" select="true()"/>
+          </xsl:apply-templates>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates mode="recordid" select=".">
+            <xsl:with-param name="baseuri" select="$baseuri"/>
+            <xsl:with-param name="idfield" select="$idfield"/>
+            <xsl:with-param name="recordno" select="$recordno"/>
+          </xsl:apply-templates>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:variable>
     <!-- legal values for LDR/06 in bib records -->
     <xsl:variable name="vBibLevelCodes">acdefgijkmoprt</xsl:variable>
@@ -147,7 +160,7 @@
         <xsl:choose>
           <xsl:when test="$serialization = 'rdfxml' ">
             <bf:Work>
-              <xsl:attribute name="rdf:about"><xsl:value-of select="translate($recordid,' ','')"/>#Work</xsl:attribute>
+              <xsl:attribute name="rdf:about"><xsl:value-of select="$recordid"/>#Work</xsl:attribute>
 
               <!-- pass fields through conversion specs for Work properties 
 		   except 400? -->

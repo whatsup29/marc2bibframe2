@@ -44,7 +44,7 @@ an XML file containing MARCXML as the second:
     xsltproc xsl/marc2bibframe2.xsl test/data/marc.xml
 
 ### Converter parameters
-The converter supports four optional parameters:
+The converter supports several optional parameters:
 - `baseuri` - the URI stem for generated entities. Default is
   `http://example.org/`, which will result in minting URIs like
   `http://example.org/<record ID>#Work`
@@ -56,6 +56,11 @@ The converter supports four optional parameters:
   subfield is `a`). *Note* - the converter will attempt to URL-encode
   the resulting record ID, substituting `%3F` (the `?` character) for
   anything outside the ASCII range.
+
+- `removeidspaces` - by default, the converter will URL-encode space
+  characters found in the `idfield` with `%20`. If `removeidspaces`
+  is set, all space characters will be removed in the record
+  ID.
 
 - `idsource` - a URI used to identify the source of the Local
   identifier derived from the `idfield` - e.g.,

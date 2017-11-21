@@ -30,6 +30,12 @@
   <xsl:param name="idfield" select="'001'"/>
 
   <!--
+      Remove spaces in record id when minting URLs instead of
+      URL-encoding them as %20. *Note*: Any value is "true"!
+  -->
+  <xsl:param name="removeidspaces"/>
+
+  <!--
       URI for record source, default none,
       e.g. http://id.loc.gov/vocabulary/organizations/dlc
       To run test of idsource, comment out next line, uncomment
@@ -149,11 +155,23 @@
     <xsl:variable name="recordno"><xsl:value-of select="position()"/></xsl:variable>
 
     <xsl:variable name="recordid">
-      <xsl:apply-templates mode="recordid" select=".">
-        <xsl:with-param name="baseuri" select="$baseuri"/>
-        <xsl:with-param name="idfield" select="$idfield"/>
-        <xsl:with-param name="recordno" select="$recordno"/>
-      </xsl:apply-templates>
+      <xsl:choose>
+        <xsl:when test="$removeidspaces">
+          <xsl:apply-templates mode="recordid" select=".">
+            <xsl:with-param name="baseuri" select="$baseuri"/>
+            <xsl:with-param name="idfield" select="$idfield"/>
+            <xsl:with-param name="recordno" select="$recordno"/>
+            <xsl:with-param name="pRemoveSpaces" select="true()"/>
+          </xsl:apply-templates>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates mode="recordid" select=".">
+            <xsl:with-param name="baseuri" select="$baseuri"/>
+            <xsl:with-param name="idfield" select="$idfield"/>
+            <xsl:with-param name="recordno" select="$recordno"/>
+          </xsl:apply-templates>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:variable>
     
     <!-- generate main Work entity -->

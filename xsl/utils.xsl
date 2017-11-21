@@ -160,6 +160,7 @@
     <xsl:param name="baseuri" select="'http://example.org/'"/>
     <xsl:param name="idfield" select="'001'"/>
     <xsl:param name="recordno"/>
+    <xsl:param name="pRemoveSpaces" select="false()"/>
     <xsl:variable name="tag" select="substring($idfield,1,3)"/>
     <xsl:variable name="subfield">
       <xsl:choose>
@@ -173,16 +174,34 @@
       <xsl:choose>
         <xsl:when test="$tag &lt; 10">
           <xsl:if test="count(marc:controlfield[@tag=$tag]) = 1">
-            <xsl:call-template name="url-encode">
-              <xsl:with-param name="str" select="marc:controlfield[@tag=$tag]"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="$pRemoveSpaces">
+                <xsl:call-template name="url-encode">
+                  <xsl:with-param name="str" select="translate(marc:controlfield[@tag=$tag],' ','')"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="url-encode">
+                  <xsl:with-param name="str" select="marc:controlfield[@tag=$tag]"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:if>
         </xsl:when>
         <xsl:otherwise>
           <xsl:if test="count(marc:datafield[@tag=$tag]/marc:subfield[@code=$subfield]) = 1">
-            <xsl:call-template name="url-encode">
-              <xsl:with-param name="str" select="normalize-space(marc:datafield[@tag=$tag]/marc:subfield[@code=$subfield])"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="$pRemoveSpaces">
+                <xsl:call-template name="url-encode">
+                  <xsl:with-param name="str" select="translate(marc:datafield[@tag=$tag]/marc:subfield[@code=$subfield],' ','')"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="url-encode">
+                  <xsl:with-param name="str" select="normalize-space(marc:datafield[@tag=$tag]/marc:subfield[@code=$subfield])"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:if>
         </xsl:otherwise>
       </xsl:choose>

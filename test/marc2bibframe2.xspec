@@ -27,9 +27,10 @@
   <x:import href="ConvSpec-841-887.xspec"/>
   <x:import href="ConvSpec-880.xspec"/>
   <x:import href="ConvSpec-Process6-Series.xspec"/>
+  <x:import href="ConvSpec-AuthWorks.xspec"/>
 
   <x:scenario label="Regression">
-    <x:scenario label="Simple transform">
+    <x:scenario label="Simple bib transform">
       <x:context href="data/marc.xml"/>
       <x:expect label="should match expected">
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -234,7 +235,7 @@
         </rdf:RDF>
       </x:expect>
     </x:scenario>
-    <x:scenario label="Simple collection transform">
+    <x:scenario label="Simple bib collection transform">
       <x:context href="data/collection.xml"/>
       <x:expect label="should match expected">
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -800,6 +801,203 @@
               </bf:Item>
             </bf:hasItem>
           </bf:Instance>
+        </rdf:RDF>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="Simple Name/Title transform">
+      <x:context href="data/auths/no90020105.xml"/>
+      <x:expect label="should match expected">
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+          <bf:Work rdf:about="http://id.loc.gov/resources/works/no90020105#Work">
+            <bf:issuance>
+              <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/sers"/>
+            </bf:issuance>
+            <bf:identifiedBy>
+              <bf:Lccn>
+                <rdf:value>no 90020105 </rdf:value>
+              </bf:Lccn>
+            </bf:identifiedBy>
+            <bf:identifiedBy>
+              <bf:Issn>
+                <rdf:value>1105-011X</rdf:value>
+              </bf:Issn>
+            </bf:identifiedBy>
+            <bf:classification>
+              <bf:ClassificationLcc>
+                <bf:classificationPortion>DF901.T75</bf:classificationPortion>
+                <bf:itemPortion>T47</bf:itemPortion>
+              </bf:ClassificationLcc>
+            </bf:classification>
+            <rdfs:label>Thrakika (Athens, Greece : 1978)</rdfs:label>
+            <bf:title>
+              <bf:Title>
+                <bflc:title30MatchKey>Thrakika (Athens, Greece : 1978)</bflc:title30MatchKey>
+                <bflc:title30MarcKey>130 0$aThrakika (Athens, Greece : 1978)</bflc:title30MarcKey>
+                <rdfs:label>Thrakika (Athens, Greece : 1978)</rdfs:label>
+                <bflc:titleSortKey>Thrakika (Athens, Greece : 1978)</bflc:titleSortKey>
+                <bf:mainTitle>Thrakika (Athens, Greece : 1978)</bf:mainTitle>
+              </bf:Title>
+            </bf:title>
+            <bf:relatedTo>
+              <bf:Work rdf:about="http://id.loc.gov/resources/works/no90020105#Work410-11">
+                <rdfs:label>Thrakika</rdfs:label>
+                <bf:title>
+                  <bf:Title>
+                    <bflc:title10MatchKey>Thrakika</bflc:title10MatchKey>
+                    <bflc:title10MarcKey>41020$aThrakiko Kentro (Athens, Greece).$tThrakika</bflc:title10MarcKey>
+                    <rdfs:label>Thrakika</rdfs:label>
+                    <bflc:titleSortKey>Thrakika</bflc:titleSortKey>
+                    <bf:mainTitle>Thrakika</bf:mainTitle>
+                  </bf:Title>
+                </bf:title>
+                <bf:contribution>
+                  <bf:Contribution>
+                    <bf:agent>
+                      <bf:Agent rdf:about="http://id.loc.gov/resources/works/no90020105#Agent410-11">
+                        <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+                        <bflc:name10MatchKey>Thrakiko Kentro (Athens, Greece).</bflc:name10MatchKey>
+                        <bflc:name10MarcKey>41020$aThrakiko Kentro (Athens, Greece).$tThrakika</bflc:name10MarcKey>
+                        <rdfs:label>Thrakiko Kentro (Athens, Greece).</rdfs:label>
+                      </bf:Agent>
+                    </bf:agent>
+                    <bf:role>
+                      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+                    </bf:role>
+                  </bf:Contribution>
+                </bf:contribution>
+              </bf:Work>
+            </bf:relatedTo>
+            <bf:relatedTo>
+              <bf:Work rdf:about="http://id.loc.gov/resources/works/no90020105#Work410-12">
+                <rdfs:label>Thrakika</rdfs:label>
+                <bf:title>
+                  <bf:Title>
+                    <bflc:title10MatchKey>Thrakika</bflc:title10MatchKey>
+                    <bflc:title10MarcKey>41020$aHetaireia Thrakikōn Meletōn.$tThrakika</bflc:title10MarcKey>
+                    <rdfs:label>Thrakika</rdfs:label>
+                    <bflc:titleSortKey>Thrakika</bflc:titleSortKey>
+                    <bf:mainTitle>Thrakika</bf:mainTitle>
+                  </bf:Title>
+                </bf:title>
+                <bf:contribution>
+                  <bf:Contribution>
+                    <bf:agent>
+                      <bf:Agent rdf:about="http://id.loc.gov/resources/works/no90020105#Agent410-12">
+                        <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+                        <bflc:name10MatchKey>Hetaireia Thrakikōn Meletōn.</bflc:name10MatchKey>
+                        <bflc:name10MarcKey>41020$aHetaireia Thrakikōn Meletōn.$tThrakika</bflc:name10MarcKey>
+                        <rdfs:label>Hetaireia Thrakikōn Meletōn.</rdfs:label>
+                      </bf:Agent>
+                    </bf:agent>
+                    <bf:role>
+                      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+                    </bf:role>
+                  </bf:Contribution>
+                </bf:contribution>
+              </bf:Work>
+            </bf:relatedTo>
+            <bf:relatedTo>
+              <bf:Work rdf:about="http://id.loc.gov/resources/works/no90020105#Work530-13">
+                <rdfs:label>Thrakika (Athens, Greece : 1928)</rdfs:label>
+                <bf:title>
+                  <bf:Title>
+                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/VariantTitle"/>
+                    <bflc:title30MatchKey>Thrakika (Athens, Greece : 1928)</bflc:title30MatchKey>
+                    <bflc:title30MarcKey>530 0$wa$aThrakika (Athens, Greece : 1928)</bflc:title30MarcKey>
+                    <rdfs:label>Thrakika (Athens, Greece : 1928)</rdfs:label>
+                    <bflc:titleSortKey>Thrakika (Athens, Greece : 1928)</bflc:titleSortKey>
+                    <bf:mainTitle>Thrakika (Athens, Greece : 1928)</bf:mainTitle>
+                  </bf:Title>
+                </bf:title>
+              </bf:Work>
+            </bf:relatedTo>
+            <bflc:seriesTreatment>
+              <bflc:SeriesProvider>
+                <rdfs:label>Athēnai; Thrakiko Kentro</rdfs:label>
+              </bflc:SeriesProvider>
+            </bflc:seriesTreatment>
+            <bflc:seriesTreatment>
+              <bflc:SeriesAnalysis>
+                <rdfs:label>Not </rdfs:label>
+                <bflc:applicableInstitution>
+                  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
+                </bflc:applicableInstitution>
+              </bflc:SeriesAnalysis>
+            </bflc:seriesTreatment>
+            <bflc:seriesTreatment>
+              <bflc:SeriesTracing>
+                <rdfs:label>Not </rdfs:label>
+                <bflc:applicableInstitution>
+                  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
+                </bflc:applicableInstitution>
+              </bflc:SeriesTracing>
+            </bflc:seriesTreatment>
+            <bflc:seriesTreatment>
+              <bflc:SeriesClassification>
+                <rdfs:label>Collection </rdfs:label>
+                <bflc:applicableInstitution>
+                  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
+                </bflc:applicableInstitution>
+              </bflc:SeriesClassification>
+            </bflc:seriesTreatment>
+            <bf:note>
+              <bf:Note>
+                <rdfs:label>Formed by the union of: Thrakika (Athens, Greece : 1928), and: Archeion Thrakēs [not in LC]</rdfs:label>
+                <bf:status>nonpublic</bf:status>
+              </bf:Note>
+            </bf:note>
+            <bf:adminMetadata>
+              <bf:AdminMetadata>
+                <bf:status>
+                  <bf:Status>
+                    <bf:code>n</bf:code>
+                  </bf:Status>
+                </bf:status>
+                <bflc:encodingLevel>
+                  <bflc:EncodingLevel>
+                    <bf:code>4</bf:code>
+                  </bflc:EncodingLevel>
+                </bflc:encodingLevel>
+                <bf:identifiedBy>
+                  <bf:Local>
+                    <rdf:value>no90020105</rdf:value>
+                    <bf:source>
+                      <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
+                    </bf:source>
+                  </bf:Local>
+                </bf:identifiedBy>
+                <bf:source>
+                  <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
+                </bf:source>
+                <bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1990-09-28T05:34:07</bf:changeDate>
+                <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-09-21</bf:creationDate>
+                <bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+                <bf:source>
+                  <bf:Source>
+                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
+                    <rdfs:label>DLC-S</rdfs:label>
+                  </bf:Source>
+                </bf:source>
+                <bf:source>
+                  <bf:Source>
+                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
+                    <rdfs:label>DLC-S</rdfs:label>
+                  </bf:Source>
+                </bf:source>
+                <bf:note>
+                  <bf:Note>
+                    <bf:noteType>Data source</bf:noteType>
+                    <rdfs:label>Thrakika (Athens, Greece : 1978). Thrakika, T. 1. (1978): t.p. (Thrakika : syngramma periodikon ekdidomenon hypo tou en Athēnais "Thrakikou Kentrou" kai tēs "Hetairias Thrakikōn Meletōn") pref. (a continuation of t. 47 of "Thrakika," and t. 39. of "Archeion Thrakēs") </rdfs:label>
+                  </bf:Note>
+                </bf:note>
+                <bf:generationProcess>
+                  <bf:GenerationProcess>
+                    <rdfs:label>DLC MAuth2BF transform-tool: 2017-07-20T13:00</rdfs:label>
+                  </bf:GenerationProcess>
+                </bf:generationProcess>
+              </bf:AdminMetadata>
+            </bf:adminMetadata>
+          </bf:Work>
         </rdf:RDF>
       </x:expect>
     </x:scenario>

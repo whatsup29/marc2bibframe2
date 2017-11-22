@@ -5,6 +5,16 @@
     <controlfield tag="003">DLC</controlfield>
     <controlfield tag="005">19900928053407.1</controlfield>
     <controlfield tag="008">900921n| acazaaaa|          |a ana      </controlfield>
+    <datafield tag="010" ind1=" " ind2=" ">
+      <subfield code="a">no 90020105 </subfield>
+    </datafield>
+    <datafield tag="020" ind1=" " ind2=" ">
+      <subfield code="a">9788802057668</subfield>
+    </datafield>
+    <datafield tag="022" ind1=" " ind2=" ">
+      <subfield code="a">1105-011X</subfield>
+      <subfield code="l">1234-1234</subfield>
+    </datafield>
     <datafield tag="130" ind1=" " ind2="0">
       <subfield code="a">Thrakika (Athens, Greece : 1978)</subfield>
     </datafield>

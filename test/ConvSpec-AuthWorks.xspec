@@ -24,4 +24,12 @@
     <x:expect label="008/12 creates an issuance property of the Work"  test="//bf:Work[1]/bf:issuance/bf:Issuance/@rdf:about='http://id.loc.gov/vocabulary/issuance/sers'"/>
   </x:scenario>
 
+  <x:scenario label="Name/Title identifiers (010-048)">
+    <x:context href="data/ConvSpec-AuthWorks/marc.xml"/>
+    <x:expect label="010 creates an identifiedBy/Lccn property of the Work" test="//bf:Work[1]/bf:identifiedBy[1]/bf:Lccn/rdf:value='no 90020105 '"/>
+    <x:expect label="020 creates an identifiedBy/Isbn property of the Work" test="//bf:Work[1]/bf:identifiedBy[2]/bf:Isbn/rdf:value='9788802057668'"/>
+    <x:expect label="022 $a/$y/$z creates an identifiedBy/Issn property of the Work" test="//bf:Work[1]/bf:identifiedBy[3]/bf:Issn/rdf:value='1105-011X'"/>
+    <x:expect label="022 $l/$m creates an identifiedBy/IssnL property of the Work" test="//bf:Work[1]/bf:identifiedBy[4]/bf:IssnL/rdf:value='1234-1234'"/>
+  </x:scenario>
+
 </x:description>

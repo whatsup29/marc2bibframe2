@@ -22,7 +22,7 @@
             </bf:issuance>
             <bf:identifiedBy>
               <bf:Lccn>
-                <rdf:value>no 90020105</rdf:value>
+                <rdf:value>no 90020105 </rdf:value>
               </bf:Lccn>
             </bf:identifiedBy>
             <bf:identifiedBy>
@@ -170,28 +170,26 @@
                   <bf:Local>
                     <rdf:value>no90020105</rdf:value>
                     <bf:source>
-                      <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
+                      <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
                     </bf:source>
                   </bf:Local>
                 </bf:identifiedBy>
                 <bf:source>
-                  <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
+                  <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
                 </bf:source>
                 <bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1990-09-28T05:34:07</bf:changeDate>
                 <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-09-21</bf:creationDate>
                 <bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
                 <bf:source>
                   <bf:Source>
-                    <bf:agent>
-                      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcs"/>
-                    </bf:agent>
+                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
+                    <rdfs:label>DLC-S</rdfs:label>
                   </bf:Source>
                 </bf:source>
                 <bf:source>
                   <bf:Source>
-                    <bf:agent>
-                      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcs"/>
-                    </bf:agent>
+                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
+                    <rdfs:label>DLC-S</rdfs:label>
                   </bf:Source>
                 </bf:source>
                 <bf:note>

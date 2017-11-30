@@ -171,19 +171,16 @@
   </local:instrumentCode>
 
   <xsl:template match="marc:datafield[@tag='016']" mode="adminmetadata">
-    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
-    <xsl:if test="$recordtype='Bibliographic'">
-      <xsl:choose>
-        <xsl:when test="$serialization = 'rdfxml'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Local</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-      </xsl:choose>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="$serialization = 'rdfxml'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Local</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+    </xsl:choose>
   </xsl:template>
   
   <xsl:template match="marc:datafield[@tag='038']" mode="adminmetadata">
@@ -273,42 +270,8 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template mode="work" match="marc:datafield[@tag='010']|
-                                   marc:datafield[@tag='020']">
-    <xsl:param name="recordtype" select="'Bibliographic'"/>
-    <xsl:param name="serialization" select="'rdfxml'"/>
-      <xsl:if test="$recordtype='NameTitleAuth'">
-      <xsl:choose>
-        <xsl:when test="@tag='010'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Lccn</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='020'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Isbn</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-            <xsl:with-param name="pChopPunct" select="true()"/>
-          </xsl:apply-templates>
-        </xsl:when>
-      </xsl:choose>
-    </xsl:if>
-  </xsl:template>
-  
   <xsl:template match="marc:datafield[@tag='022']" mode="work">
-    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
-    <xsl:if test="$recordtype='NameTitleAuth'">
-      <xsl:apply-templates select="." mode="instanceId">
-        <xsl:with-param name="serialization" select="$serialization"/>
-        <xsl:with-param name="pIdentifier">bf:Issn</xsl:with-param>
-        <xsl:with-param name="pIncorrectLabel">incorrect</xsl:with-param>
-        <xsl:with-param name="pInvalidLabel">canceled</xsl:with-param>
-      </xsl:apply-templates>
-    </xsl:if>
     <xsl:choose>
       <xsl:when test="$serialization = 'rdfxml'">
         <xsl:for-each select="marc:subfield[@code='l'] | marc:subfield[@code='m']">

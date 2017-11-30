@@ -14,7 +14,6 @@
   -->
 
   <xsl:template match="marc:controlfield[@tag='001']" mode="adminmetadata">
-    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
     <xsl:choose>
       <xsl:when test="$serialization= 'rdfxml'">
@@ -22,22 +21,18 @@
           <bf:Local>
             <rdf:value><xsl:value-of select="."/></rdf:value>
             <xsl:choose>
-              <xsl:when test="$recordtype='NameTitleAuth'">
-                <xsl:if test="../marc:controlfield[@tag='003']">
-                  <xsl:apply-templates select="../marc:controlfield[@tag='003']" mode="adminmetadata">
-                    <xsl:with-param name="serialization" select="$serialization"/>
-                  </xsl:apply-templates>
-                </xsl:if>
+              <xsl:when test="$idsource != ''">
+                <bf:source>
+                  <bf:Source>
+                    <xsl:attribute name="rdf:about"><xsl:value-of select="$idsource"/></xsl:attribute>
+                  </bf:Source>
+                </bf:source>
               </xsl:when>
-              <xsl:otherwise>
-                <xsl:if test="$idsource != ''">
-                  <bf:source>
-                    <bf:Source>
-                      <xsl:attribute name="rdf:about"><xsl:value-of select="$idsource"/></xsl:attribute>
-                    </bf:Source>
-                  </bf:source>
-                </xsl:if>
-              </xsl:otherwise>
+              <xsl:when test="../marc:controlfield[@tag='003']">
+                <xsl:apply-templates select="../marc:controlfield[@tag='003']" mode="adminmetadata">
+                  <xsl:with-param name="serialization" select="$serialization"/>
+                </xsl:apply-templates>
+              </xsl:when>
             </xsl:choose>
           </bf:Local>
         </bf:identifiedBy>

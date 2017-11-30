@@ -159,17 +159,6 @@
 
   </xsl:template>
 
-  <!-- mets files with embedded MARCXML -->
-  <xsl:template match="mets:mets/mets:dmdSec[@ID='marcxml']/mets:mdWrap[@MDTYPE='MARC']/mets:xmlData">
-    <xsl:param name="serialization" select="'rdfxml'"/>
-
-    <!-- pass marc:record nodes on down -->
-    <xsl:apply-templates>
-      <xsl:with-param name="serialization" select="$serialization"/>
-    </xsl:apply-templates>
-
-  </xsl:template>
-
   <xsl:template match="marc:record">
     <xsl:param name="serialization"/>
 
@@ -206,6 +195,7 @@
                                  or marc:datafield[@tag='111']/marc:subfield[@code='t']
                                  or marc:datafield[@tag='130'])">NameTitleAuth</xsl:when>
         <xsl:when test="contains($vBibLevelCodes, substring(marc:leader,7,1))">Bibliographic</xsl:when>
+        <xsl:when test="@type"><xsl:value-of select="@type"/></xsl:when>
         <xsl:otherwise>Unknown</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -308,12 +298,15 @@
 
   <!-- warn about other elements -->
   <xsl:template match="*">
+    <xsl:param name="serialization"/>
 
     <xsl:message terminate="no">
       <xsl:text>WARNING: Unmatched element: </xsl:text><xsl:value-of select="name()"/>
     </xsl:message>
 
-    <xsl:apply-templates/>
+    <xsl:apply-templates>
+      <xsl:with-param name="serialization" select="$serialization"/>
+    </xsl:apply-templates>
 
   </xsl:template>
 

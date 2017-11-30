@@ -6,13 +6,178 @@
                 xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
                 xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
                 xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+                xmlns:local="local:"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                exclude-result-prefixes="xsl marc">
+                exclude-result-prefixes="xsl marc local">
 
   <!--
       Conversion specs for Name/Title authority records
   -->
 
+  <!-- descriptionConventions map for 008/10 -->
+  <local:descriptionConventions>
+    <a href="http://id.loc.gov/vocabulary/descriptionConventions/ala">ALA</a>
+    <b href="http://id.loc.gov/vocabulary/descriptionConventions/aacr">AACR 1</b>
+    <c href="http://id.loc.gov/vocabulary/descriptionConventions/aacr">AACR 2</c>
+    <d href="http://id.loc.gov/vocabulary/descriptionConventions/aacr">AACR 2 compatible</d>
+  </local:descriptionConventions>
+
+  <!-- issuance map for 008/12 -->
+  <local:issuance>           
+    <a href="http://id.loc.gov/vocabulary/issuance/sers">Monographic series</a>
+    <b href="http://id.loc.gov/vocabulary/issuance/mulm">Multipart item</b>    
+    <c href="http://id.loc.gov/vocabulary/issuance/mono">Series-like phrase</c>    
+    <n href="http://id.loc.gov/vocabulary/issuance/mono">Not applicable</n>
+    <z href="http://id.loc.gov/vocabulary/issuance/sers">Other</z>
+  </local:issuance>
+
+  <xsl:template mode="authAdminmetadata" match="marc:leader">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:choose>
+      <xsl:when test="$serialization = 'rdfxml'">
+        <xsl:choose>
+          <xsl:when test="substring(.,6,1) = 'c'">
+            <bf:status>
+              <bf:Status>
+                <bf:code>c</bf:code>
+              </bf:Status>
+            </bf:status>
+          </xsl:when>
+	  <xsl:when test="substring(.,6,1) = 'd'">
+            <bf:status>
+              <bf:Status>
+                <bf:code>d</bf:code>
+              </bf:Status>
+            </bf:status>
+          </xsl:when>
+          <xsl:when test="substring(.,6,1) = 'n'">
+            <bf:status>
+              <bf:Status>
+                <bf:code>n</bf:code>
+              </bf:Status>
+            </bf:status>
+          </xsl:when>
+          <xsl:when test="substring(.,6,1) = 'p'">
+            <bf:status>
+              <bf:Status>
+                <bf:code>p</bf:code>
+              </bf:Status>
+            </bf:status>
+          </xsl:when>
+        </xsl:choose>
+        <xsl:if test="substring(.,18,1)='n' or substring(.,18,1)='o'">
+          <bflc:encodingLevel>
+            <bflc:EncodingLevel>
+              <bf:code>
+                <xsl:choose>
+                  <xsl:when test="substring(.,18,1)='n'">4</xsl:when>
+                  <xsl:when test="substring(.,18,1)='o'">7</xsl:when>
+                </xsl:choose>
+              </bf:code>
+            </bflc:EncodingLevel>
+          </bflc:encodingLevel>
+        </xsl:if>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="marc:controlfield[@tag='001']" mode="authAdminmetadata">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:apply-templates select="." mode="adminmetadata">
+      <xsl:with-param name="serialization" select="$serialization"/>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="marc:controlfield[@tag='003']" mode="authAdminmetadata">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:apply-templates select="." mode="adminmetadata">
+      <xsl:with-param name="serialization" select="$serialization"/>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="marc:controlfield[@tag='005']" mode="authAdminmetadata">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:apply-templates select="." mode="adminmetadata">
+      <xsl:with-param name="serialization" select="$serialization"/>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="marc:controlfield[@tag='008']" mode="authAdminmetadata">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:variable name="descConv" select="substring(.,11,1)"/>
+    <xsl:call-template name="creation-date">
+      <xsl:with-param name="serialization" select="$serialization"/>
+      <xsl:with-param name="pDateStr" select="substring(.,1,6)"/>
+    </xsl:call-template>
+    <xsl:choose>
+      <xsl:when test="$serialization= 'rdfxml'">
+      <xsl:for-each select="document('')/*/local:descriptionConventions/*[name() = $descConv]">
+        <bf:descriptionConventions>            
+          <xsl:attribute name="rdf:resource"><xsl:value-of select="@href"/></xsl:attribute>
+        </bf:descriptionConventions>
+      </xsl:for-each>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="marc:controlfield[@tag='008']" mode="authWork">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:variable name="issuance">
+      <xsl:choose> <!-- nac=mono -->
+	<xsl:when test="substring(.,13,1) = ' '">c</xsl:when>
+	<xsl:when test="substring(.,13,1) = '|'">c</xsl:when>
+	<xsl:otherwise>
+	  <xsl:value-of select="substring(.,13,1)"/>     
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="$serialization = 'rdfxml'">       
+	<xsl:if test="$issuance != ''">				
+	  <xsl:for-each select="document('')/*/local:issuance/*[name() = $issuance]">
+            <bf:issuance>
+              <bf:Issuance>
+                <xsl:attribute name="rdf:about"><xsl:value-of select="@href"/></xsl:attribute>
+              </bf:Issuance>
+            </bf:issuance>
+          </xsl:for-each>
+        </xsl:if>
+      </xsl:when>
+    </xsl:choose>   
+  </xsl:template>
+
+  <xsl:template match="marc:datafield[@tag='010']" mode="authWork">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:apply-templates select="." mode="instanceId">
+      <xsl:with-param name="serialization" select="$serialization"/>
+      <xsl:with-param name="pIdentifier">bf:Lccn</xsl:with-param>
+      <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+    </xsl:apply-templates>
+  </xsl:template>
+  
+  <xsl:template match="marc:datafield[@tag='020']" mode="authWork">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:apply-templates select="." mode="instanceId">
+      <xsl:with-param name="serialization" select="$serialization"/>
+      <xsl:with-param name="pIdentifier">bf:Isbn</xsl:with-param>
+      <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+      <xsl:with-param name="pChopPunct" select="true()"/>
+    </xsl:apply-templates>
+  </xsl:template>
+  
+  <xsl:template match="marc:datafield[@tag='022']" mode="authWork">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:apply-templates select="." mode="instanceId">
+      <xsl:with-param name="serialization" select="$serialization"/>
+      <xsl:with-param name="pIdentifier">bf:Issn</xsl:with-param>
+      <xsl:with-param name="pIncorrectLabel">incorrect</xsl:with-param>
+      <xsl:with-param name="pInvalidLabel">canceled</xsl:with-param>
+    </xsl:apply-templates>
+    <xsl:apply-templates select="." mode="work">
+      <xsl:with-param name="serialization" select="$serialization"/>
+    </xsl:apply-templates>
+  </xsl:template>
+  
   <xsl:template mode="authWork" match="marc:datafield[@tag='024'] |
                                    marc:datafield[@tag='035']">
     <xsl:param name="serialization" select="'rdfxml'"/>
@@ -1089,7 +1254,7 @@
   -->
 
   <!-- bf:Work properties from Uniform Title fields -->
-  <xsl:template match="marc:datafield[@tag='130' or @tag='240']" mode="work">
+  <xsl:template match="marc:datafield[@tag='130' or @tag='240']" mode="authWork">
     <xsl:param name="recordid"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
     <xsl:apply-templates mode="authWorkUnifTitle" select=".">

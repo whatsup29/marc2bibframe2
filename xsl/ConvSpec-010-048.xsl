@@ -171,19 +171,16 @@
   </local:instrumentCode>
 
   <xsl:template match="marc:datafield[@tag='016']" mode="adminmetadata">
-    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
-    <xsl:if test="$recordtype='Bibliographic'">
-      <xsl:choose>
-        <xsl:when test="$serialization = 'rdfxml'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Local</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-      </xsl:choose>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="$serialization = 'rdfxml'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Local</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+    </xsl:choose>
   </xsl:template>
   
   <xsl:template match="marc:datafield[@tag='038']" mode="adminmetadata">
@@ -785,135 +782,132 @@
                                        marc:datafield[@tag='036'] |
                                        marc:datafield[@tag='074'] |
                                        marc:datafield[@tag='088']">
-    <xsl:param name="recordtype" select="'Bibliographic'"/>
     <xsl:param name="serialization" select="'rdfxml'"/>
-    <xsl:if test="$recordtype='Bibliographic'">
-      <xsl:choose>
-        <xsl:when test="@tag='010'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Lccn</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='015'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Nbn</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='017'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:CopyrightNumber</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='020'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Isbn</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-            <xsl:with-param name="pChopPunct" select="true()"/>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='022'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Issn</xsl:with-param>
-            <xsl:with-param name="pIncorrectLabel">incorrect</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">canceled</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='024'">
-          <xsl:variable name="vIdentifier">
-            <xsl:choose>
-              <xsl:when test="@ind1 = '0'">bf:Isrc</xsl:when>
-              <xsl:when test="@ind1 = '1'">bf:Upc</xsl:when>
-              <xsl:when test="@ind1 = '2'">bf:Ismn</xsl:when>
-              <xsl:when test="@ind1 = '3'">bf:Ean</xsl:when>
-              <xsl:when test="@ind1 = '4'">bf:Sici</xsl:when>
-              <xsl:otherwise>bf:Identifier</xsl:otherwise>
-            </xsl:choose>
-          </xsl:variable>
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier"><xsl:value-of select="$vIdentifier"/></xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='025'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:LcOverseasAcq</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='027'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Strn</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='028'">
-          <xsl:variable name="vIdentifier">
-            <xsl:choose>
-              <xsl:when test="@ind1 = '0'">bf:AudioIssueNumber</xsl:when>
-              <xsl:when test="@ind1 = '1'">bf:MatrixNumber</xsl:when>
-              <xsl:when test="@ind1 = '2'">bf:MusicPlate</xsl:when>
-              <xsl:when test="@ind1 = '3'">bf:MusicPublisherNumber</xsl:when>
-              <xsl:when test="@ind1 = '4'">bf:VideoRecordingNumber</xsl:when>
-              <xsl:otherwise>bf:PublisherNumber</xsl:otherwise>
-            </xsl:choose>
-          </xsl:variable>
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier"><xsl:value-of select="$vIdentifier"/></xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='030'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Coden</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='032'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:PostalRegistration</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='035'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Local</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='036'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:StudyNumber</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='074'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:Identifier</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-        <xsl:when test="@tag='088'">
-          <xsl:apply-templates select="." mode="instanceId">
-            <xsl:with-param name="serialization" select="$serialization"/>
-            <xsl:with-param name="pIdentifier">bf:ReportNumber</xsl:with-param>
-            <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
-          </xsl:apply-templates>
-        </xsl:when>
-      </xsl:choose>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="@tag='010'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Lccn</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='015'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Nbn</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='017'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:CopyrightNumber</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='020'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Isbn</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+          <xsl:with-param name="pChopPunct" select="true()"/>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='022'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Issn</xsl:with-param>
+          <xsl:with-param name="pIncorrectLabel">incorrect</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">canceled</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='024'">
+        <xsl:variable name="vIdentifier">
+          <xsl:choose>
+            <xsl:when test="@ind1 = '0'">bf:Isrc</xsl:when>
+            <xsl:when test="@ind1 = '1'">bf:Upc</xsl:when>
+            <xsl:when test="@ind1 = '2'">bf:Ismn</xsl:when>
+            <xsl:when test="@ind1 = '3'">bf:Ean</xsl:when>
+            <xsl:when test="@ind1 = '4'">bf:Sici</xsl:when>
+            <xsl:otherwise>bf:Identifier</xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier"><xsl:value-of select="$vIdentifier"/></xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='025'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:LcOverseasAcq</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='027'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Strn</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='028'">
+        <xsl:variable name="vIdentifier">
+          <xsl:choose>
+            <xsl:when test="@ind1 = '0'">bf:AudioIssueNumber</xsl:when>
+            <xsl:when test="@ind1 = '1'">bf:MatrixNumber</xsl:when>
+            <xsl:when test="@ind1 = '2'">bf:MusicPlate</xsl:when>
+            <xsl:when test="@ind1 = '3'">bf:MusicPublisherNumber</xsl:when>
+            <xsl:when test="@ind1 = '4'">bf:VideoRecordingNumber</xsl:when>
+            <xsl:otherwise>bf:PublisherNumber</xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier"><xsl:value-of select="$vIdentifier"/></xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='030'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Coden</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='032'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:PostalRegistration</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='035'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Local</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='036'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:StudyNumber</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='074'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:Identifier</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="@tag='088'">
+        <xsl:apply-templates select="." mode="instanceId">
+          <xsl:with-param name="serialization" select="$serialization"/>
+          <xsl:with-param name="pIdentifier">bf:ReportNumber</xsl:with-param>
+          <xsl:with-param name="pInvalidLabel">invalid</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="marc:datafield" mode="instanceId">

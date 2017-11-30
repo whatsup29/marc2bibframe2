@@ -396,4 +396,27 @@
     </xsl:if>
   </xsl:template>
 
+  <!--
+      Generate a bf:creationDate property from a date as encoded in the 008
+  -->
+  <xsl:template name="creation-date">
+    <xsl:param name="serialization" select="'rdfxml'"/>
+    <xsl:param name="pDateStr"/>
+    <xsl:variable name="marcYear" select="substring($pDateStr,1,2)"/>
+    <xsl:variable name="creationYear">
+      <xsl:choose>
+        <xsl:when test="$marcYear &lt; 50"><xsl:value-of select="concat('20',$marcYear)"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="concat('19',$marcYear)"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="$serialization= 'rdfxml'">
+        <bf:creationDate>
+          <xsl:attribute name="rdf:datatype"><xsl:value-of select="$xs"/>date</xsl:attribute>
+          <xsl:value-of select="concat($creationYear,'-',substring($pDateStr,3,2),'-',substring($pDateStr,5,2))"/>
+        </bf:creationDate>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
 </xsl:stylesheet>

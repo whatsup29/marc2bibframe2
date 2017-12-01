@@ -57,6 +57,20 @@
                     </bf:itemPortion>
                   </xsl:for-each>
                 </xsl:if>
+                <!-- auths only -->
+                <xsl:for-each select="../marc:subfield[@code='d']">
+                  <bflc:appliesTo>
+                    <bflc:AppliesTo>
+                      <rdfs:label><xsl:value-of select="."/></rdfs:label>
+                    </bflc:AppliesTo>
+                  </bflc:appliesTo>
+                </xsl:for-each>
+                <!-- auths only -->
+                <xsl:for-each select="../marc:subfield[@code='5']">
+                  <xsl:apply-templates select="." mode="subfield5">
+                    <xsl:with-param name="serialization" select="$serialization"/>
+                  </xsl:apply-templates>
+                </xsl:for-each>
               </bf:ClassificationLcc>
             </bf:classification>
           </xsl:if>
@@ -197,6 +211,18 @@
                 </bf:Source>
               </bf:source>
             </xsl:if>
+            <!-- auths only -->
+            <xsl:for-each select="../marc:subfield[@code='d']">
+              <bflc:appliesTo>
+                <bflc:AppliesTo>
+                  <rdfs:label><xsl:value-of select="."/></rdfs:label>
+                </bflc:AppliesTo>
+              </bflc:appliesTo>
+            </xsl:for-each>
+            <!-- auths only -->
+            <xsl:apply-templates select="marc:subfield[@code='5']" mode="subfield5">
+              <xsl:with-param name="serialization" select="$serialization"/>
+            </xsl:apply-templates>
           </bf:ClassificationNlm>
         </bf:classification>
       </xsl:when>

@@ -13,14 +13,14 @@
     <x:context href="data/ConvSpec-5XX/marc.xml"/>
     <x:expect label="500 creates a note property of the Instance" test="//bf:Instance[1]/bf:note[1]/bf:Note/rdfs:label = 'From the papers of the Chase family.'"/>
     <x:expect label="$3 creates a bflc:appliesTo property of the Note" test="//bf:Instance[1]/bf:note[1]/bf:Note/bflc:appliesTo/bflc:AppliesTo/rdfs:label = 'Some stuff'"/>
-    <x:expect label="$5 creates a bflc:applicableInstitution property of the Note" test="//bf:Instance[1]/bf:note[1]/bf:Note/bflc:applicableInstitution/bf:Agent/bf:code = 'DLC'"/>
+    <x:expect label="$5 creates a bflc:applicableInstitution property of the Note" test="//bf:Instance[1]/bf:note[1]/bf:Note/bflc:applicableInstitution/bf:Agent/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
   </x:scenario>
 
   <x:scenario label="501 - WITH NOTE">
     <x:context href="data/ConvSpec-5XX/marc.xml"/>
     <x:expect label="501 creates a note/Note property of the Instance with noteType 'with'" test="//bf:Instance[1]/bf:note[2]/bf:Note/bf:noteType = 'with'"/>
     <x:expect label="$a creates an rdfs:label property of the Note" test="//bf:Instance[1]/bf:note[2]/bf:Note/rdfs:label = 'With: The reformed school / John Dury. London : Printed for R. Wasnothe, [1850]'"/>
-    <x:expect label="$5 creates a bflc:applicableInstitution property of the Note" test="//bf:Instance[1]/bf:note[2]/bf:Note/bflc:applicableInstitution/bf:Agent/bf:code = 'DLC'"/>
+    <x:expect label="$5 creates a bflc:applicableInstitution property of the Note" test="//bf:Instance[1]/bf:note[2]/bf:Note/bflc:applicableInstitution/bf:Agent/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
   </x:scenario>
 
   <x:scenario label="502 - DISSERTATION NOTE">
@@ -156,7 +156,7 @@
     <x:expect label="$d creates a note property of the UsePolicy" test="//bf:Instance[1]/bf:usageAndAccessPolicy[2]/bf:UsePolicy/bf:note/bf:Note/rdfs:label = 'Authorized users: Executor of estate'"/>
     <x:expect label="$u creates an rdfs:label property of the UsePolicy" test="//bf:Instance[1]/bf:usageAndAccessPolicy[2]/bf:UsePolicy/rdfs:label[2] = 'http://lcweb.loc.gov/rr/print/195_copr.html'"/>
     <x:expect label="$3 creates a bflc:appliesTo property of the UsePolicy" test="//bf:Instance[1]/bf:usageAndAccessPolicy[2]/bf:UsePolicy/bflc:appliesTo/bflc:AppliesTo/rdfs:label = 'Diaries'"/>
-    <x:expect label="$5 creates a bflc:applicableInstitution property of the UsePolicy" test="//bf:Instance[1]/bf:usageAndAccessPolicy[2]/bf:UsePolicy/bflc:applicableInstitution/bf:Agent/bf:code = 'DLC'"/>
+    <x:expect label="$5 creates a bflc:applicableInstitution property of the UsePolicy" test="//bf:Instance[1]/bf:usageAndAccessPolicy[2]/bf:UsePolicy/bflc:applicableInstitution/bf:Agent/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
   </x:scenario>
   
   <x:scenario label="541 - IMMEDIATE SOURCE OF ACQUISITION NOTE">
@@ -164,7 +164,7 @@
     <x:expect label="541 creates a new Item with an immediateAcquisition/ImmediateAcquisition property" test="count(//bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition) = 1"/>
     <x:expect label="$abcdefhno creates an rdfs:label property of the ImmediateAcquistion" test="//bf:Item[1]/bf:immediateAcquisition[1]/bf:ImmediateAcquisition/rdfs:label = '25 reels of microfilm U.S. Department of Transportation; Transfer under schedule; 1980/01/10.'"/>
     <x:expect label="$3 creates a bflc:appliesTo property of the Item" test="//bf:Item[1]/bflc:appliesTo/bflc:AppliesTo/rdfs:label = 'Materials scheduled for permanent retention'"/>
-    <x:expect label="$5 creates a bflc:applicableInstitution property of the Item" test="//bf:Item[1]/bflc:applicableInstitution/bf:Agent/bf:code = 'DLC'"/>
+    <x:expect label="$5 creates a bflc:applicableInstitution property of the Item" test="//bf:Item[1]/bflc:applicableInstitution/bf:Agent/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
   </x:scenario>
   
   <x:scenario label="544 - LOCATION OF OTHER ARCHIVAL MATERIALS NOTE">
@@ -255,7 +255,7 @@
     <x:expect label="585 creates a note/Note property of the Instance with noteType 'exhibition'" test="//bf:Instance[1]/bf:note[15]/bf:Note/bf:noteType = 'exhibition'"/>
     <x:expect label="$a creates an rdfs:label property of the Note" test="//bf:Instance[1]/bf:note[15]/bf:Note/rdfs:label = 'Exhibited: &quot;Le Brun à Versailles,&quot; sponsored by the Cabinet des dessins, Musée du Louvre, 1985-1986.'"/>
     <x:expect label="$3 creates a bflc:appliesTo property of the Note" test="//bf:Instance[1]/bf:note[15]/bf:Note/bflc:appliesTo/bflc:AppliesTo/rdfs:label = 'Color lithographs'"/>
-    <x:expect label="$5 creates a bflc:applicableInstitution property of the Note" test="//bf:Instance[1]/bf:note[15]/bf:Note/bflc:applicableInstitution/bf:Agent/bf:code = 'DLC'"/>
+    <x:expect label="$5 creates a bflc:applicableInstitution property of the Note" test="//bf:Instance[1]/bf:note[15]/bf:Note/bflc:applicableInstitution/bf:Agent/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
   </x:scenario>
   
   <x:scenario label="586 - AWARDS NOTE">

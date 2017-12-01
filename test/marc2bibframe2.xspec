@@ -66,14 +66,16 @@
                 <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2004-05-20</bf:creationDate>
                 <bf:source>
                   <bf:Source>
-                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-                    <rdfs:label>DLC</rdfs:label>
+                    <bf:agent>
+                      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
+                    </bf:agent>
                   </bf:Source>
                 </bf:source>
                 <bf:source>
                   <bf:Source>
-                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-                    <rdfs:label>DLC</rdfs:label>
+                    <bf:agent>
+                      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
+                    </bf:agent>
                   </bf:Source>
                 </bf:source>
               </bf:AdminMetadata>
@@ -277,14 +279,16 @@
                 <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1991-09-26</bf:creationDate>
                 <bf:source>
                   <bf:Source>
-                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-                    <rdfs:label>DLC</rdfs:label>
+                    <bf:agent>
+                      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
+                    </bf:agent>
                   </bf:Source>
                 </bf:source>
                 <bf:source>
                   <bf:Source>
-                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-                    <rdfs:label>DLC</rdfs:label>
+                    <bf:agent>
+                      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" />
+                    </bf:agent>
                   </bf:Source>
                 </bf:source>
               </bf:AdminMetadata>
@@ -521,14 +525,20 @@
                 <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-04-07</bf:creationDate>
                 <bf:source>
                   <bf:Source>
-                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-                    <rdfs:label>IEU</rdfs:label>
+                    <bf:agent>
+                      <bf:Agent>
+                        <rdfs:label>IEU</rdfs:label>
+                      </bf:Agent>
+                    </bf:agent>
                   </bf:Source>
                 </bf:source>
                 <bf:source>
                   <bf:Source>
-                    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-                    <rdfs:label>IEU</rdfs:label>
+                    <bf:agent>
+                      <bf:Agent>
+                        <rdfs:label>IEU</rdfs:label>
+                      </bf:Agent>
+                    </bf:agent>
                   </bf:Source>
                 </bf:source>
                 <bf:descriptionModifier>

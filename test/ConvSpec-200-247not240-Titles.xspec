@@ -200,7 +200,7 @@
     </x:scenario>
     <x:scenario label="$5">
       <x:context href="data/ConvSpec-200-247not240-Titles/marc246.xml"/>
-      <x:expect label="becomes the applicableInstitution" test="//bf:Instance[4]/bf:title/bf:Title/bflc:applicableInstitution/bf:Agent/bf:code = 'DLC'"/>
+      <x:expect label="becomes the applicableInstitution" test="//bf:Instance[4]/bf:title/bf:Title/bflc:applicableInstitution/bf:Agent/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc'"/>
     </x:scenario>
   </x:scenario>
 

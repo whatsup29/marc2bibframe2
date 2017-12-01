@@ -49,7 +49,7 @@
     <x:expect label="$w becomes an identifiedBy" test="//bf:Work[@rdf:about='http://example.org/1#Work']/bf:identifiedBy[2]/bf:Identifier/rdf:value = '0002'"/>
     <x:expect label="$0/$w, if a URI, becomes the rdf:about attribute of the bf:Work for 630, 730, 830" test="//bf:Work[@rdf:about='http://example.org/1#Work']/bf:subject[1]/bf:Work/@rdf:about = 'http://example.org/9999#Work'"/>
     <x:expect label="$3 becomes a bflc:appliesTo" test="//bf:Work[@rdf:about='http://example.org/2#Work730-4']/bflc:appliesTo/bflc:AppliesTo/rdfs:label = '1980'"/>
-    <x:expect label="$5 becomes a bflc:applicableInstitution" test="//bf:Work[@rdf:about='http://example.org/2#Work730-5']/bflc:applicableInstitution/bf:Agent/bf:code = 'DLC'"/>
+    <x:expect label="$5 becomes a bflc:applicableInstitution" test="//bf:Work[@rdf:about='http://example.org/2#Work730-5']/bflc:applicableInstitution/bf:Agent/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc'"/>
   </x:scenario>
 
 </x:description>

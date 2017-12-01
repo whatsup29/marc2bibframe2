@@ -17,7 +17,7 @@
     <x:expect label="LDR/17 sets the bflc:encodingLevel property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code='4'"/>
     <x:expect label="001 should set the AdminMetadata identifiedBy property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value = '1'"/>
     <x:expect label="...with source property of Local set by 003" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/bf:source/bf:Source/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
-    <x:expect label="003 should set the AdminMetadata source property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:source/bf:Source/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
+    <x:expect label="003 should set the AdminMetadata source property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:source[1]/bf:Source/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlc'"/>
     <x:expect label="005 should set the AdminMetadata changeDate property for the work" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:changeDate[@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime']  = '1990-09-28T05:34:07'"/>
     <x:expect label="008/00-05 sets the creationDate property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:creationDate[@rdf:datatype='http://www.w3.org/2001/XMLSchema#date']='1990-09-21'"/>
     <x:expect label="008/10 sets the descriptionConventions property of the Work/adminMetadata/AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/@rdf:resource='http://id.loc.gov/vocabulary/descriptionConventions/aacr'"/>
@@ -30,6 +30,15 @@
     <x:expect label="020 creates an identifiedBy/Isbn property of the Work" test="//bf:Work[1]/bf:identifiedBy[2]/bf:Isbn/rdf:value='9788802057668'"/>
     <x:expect label="022 $a/$y/$z creates an identifiedBy/Issn property of the Work" test="//bf:Work[1]/bf:identifiedBy[3]/bf:Issn/rdf:value='1105-011X'"/>
     <x:expect label="022 $l/$m creates an identifiedBy/IssnL property of the Work" test="//bf:Work[1]/bf:identifiedBy[4]/bf:IssnL/rdf:value='1234-1234'"/>
+    <x:expect label="024 creates an identifiedBy/Identifier property of the Work" test="//bf:Work[1]/bf:identifiedBy[5]/bf:Identifier/rdf:value='T-345246800-1'"/>
+    <x:expect label="035 $a creates an identifiedBy/Local property of the Work" test="//bf:Work[1]/bf:identifiedBy[6]/bf:Local/rdf:value = '1553114'"/>
+    <x:expect label="...value in parens creates a source property of the Local" test="//bf:Work[1]/bf:identifiedBy[6]/bf:Local/bf:source/bf:Source/rdfs:label = 'OCoLC'"/>
+    <x:expect label="...$z creates a status/Status property of the Local with rdfs:label 'invalid'" test="//bf:Work[1]/bf:identifiedBy[7]/bf:Local/bf:status/bf:Status/rdfs:label = 'invalid'"/>
+    <x:expect label="040 creates a source property of the Work AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:source[2]/bf:Source/bf:agent/bf:Agent/@rdf:about = 'http://id.loc.gov/vocabulary/organizations/dlcs'"/>
+    <x:expect label="042 creates descriptionAuthentication properties of the Work AdminMetadata" test="//bf:Work[1]/bf:adminMetadata/bf:AdminMetadata/bf:descriptionAuthentication[2]/bf:DescriptionAuthentication/@rdf:about = 'http://id.loc.gov/vocabulary/marcauthen/nsdp'"/>
+    <x:expect label="046 creates originDate property of the Work" test="//bf:Work[1]/bf:originDate = '1985'"/>
+    <x:expect label="050 creates a classification/ClassificationLcc property of the Work" test="//bf:Work[1]/bf:classification[1]/bf:ClassificationLcc/bf:classificationPortion='DF901.T75'"/>
+    <x:expect label="060 creates a classification/ClassificationNlm property of the Work" test="//bf:Work[1]/bf:classification[2]/bf:ClassificationNlm/bf:classificationPortion='W1'"/>
   </x:scenario>
 
 </x:description>

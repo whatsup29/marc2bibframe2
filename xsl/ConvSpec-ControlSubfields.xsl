@@ -155,7 +155,14 @@
       <xsl:when test="$serialization='rdfxml'">
         <bflc:applicableInstitution>
           <bf:Agent>
-            <bf:code><xsl:value-of select="."/></bf:code>
+	    <xsl:choose>
+	      <xsl:when test="starts-with(.,'DLC')">
+		<xsl:attribute  name="rdf:about"><xsl:value-of select="concat($organizations,translate(.,concat($vUpper,'- ' ),$vLower))"/></xsl:attribute>
+	      </xsl:when>
+	      <xsl:otherwise>
+            	<bf:code><xsl:value-of select="."/></bf:code>
+	      </xsl:otherwise>
+	    </xsl:choose>
           </bf:Agent>
         </bflc:applicableInstitution>
       </xsl:when>

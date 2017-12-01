@@ -15,6 +15,33 @@
       <subfield code="a">1105-011X</subfield>
       <subfield code="l">1234-1234</subfield>
     </datafield>
+    <datafield tag="024" ind1="7" ind2=" ">
+      <subfield code="a">T-345246800-1</subfield>
+      <subfield code="2">iswc</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)1553114</subfield>
+      <subfield code="z">(OCoLC)153114</subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">DLC-S</subfield>
+      <subfield code="c">DLC-S</subfield>
+    </datafield>
+    <datafield tag="042" ind1=" " ind2=" ">
+      <subfield code="a">lc</subfield>
+      <subfield code="a">nsdp</subfield>
+    </datafield>
+    <datafield tag="046" ind1=" " ind2=" ">
+      <subfield code="k">1985</subfield>
+    </datafield>
+    <datafield tag="050" ind1=" " ind2=" ">
+      <subfield code="a">DF901.T75</subfield>
+      <subfield code="b">T47</subfield>
+    </datafield>
+    <datafield tag="060" ind1=" " ind2="0">
+      <subfield code="a">W1</subfield>
+      <subfield code="b">JO706M</subfield>
+    </datafield>
     <datafield tag="130" ind1=" " ind2="0">
       <subfield code="a">Thrakika (Athens, Greece : 1978)</subfield>
     </datafield>

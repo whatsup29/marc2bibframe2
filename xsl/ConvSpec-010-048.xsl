@@ -205,10 +205,18 @@
         <xsl:for-each select="marc:subfield[@code='a' or @code='c']">
           <bf:source>
             <bf:Source>
-              <rdf:type>
-                <xsl:attribute name="rdf:resource"><xsl:value-of select="concat($bf,'Agent')"/></xsl:attribute>
-              </rdf:type>
-              <rdfs:label><xsl:value-of select="."/></rdfs:label>
+	      <bf:agent>
+                <bf:Agent>
+		  <xsl:choose>
+		    <xsl:when test="starts-with(.,'DLC')">
+		      <xsl:attribute  name="rdf:about"><xsl:value-of select="concat($organizations,translate(.,concat($vUpper,'- ' ),$vLower))"/></xsl:attribute>
+		    </xsl:when>
+		    <xsl:otherwise>
+            	      <rdfs:label><xsl:value-of select="."/></rdfs:label>
+		    </xsl:otherwise>
+		  </xsl:choose>                          
+	        </bf:Agent>
+              </bf:agent>
             </bf:Source>
           </bf:source>
         </xsl:for-each>
